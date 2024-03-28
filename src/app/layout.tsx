@@ -4,6 +4,7 @@ import "./global.css"
 import { Inter } from 'next/font/google'
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import SmoothScroller from "@/components/Lenis"
 
 const dmSans = Inter({
     subsets: ['latin'],
@@ -19,6 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${dmSans.variable} `}>
         <body className="bg-[#232b2b] text-white" >
+        <SmoothScroller />
         <Header/>
         <main>{children}</main>
         <Footer/>
