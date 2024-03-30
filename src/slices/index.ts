@@ -5,5 +5,6 @@ import dynamic from "next/dynamic";
 export const components = {
   contact_form: dynamic(() => import("./ContactForm")),
   hero: dynamic(() => import("./Hero")),
+  image_full: dynamic(() => import("./ImageFull")),
   rich_text: dynamic(() => import("./RichText")),
 };

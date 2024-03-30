@@ -39,6 +39,60 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                         <PrismicNextImage className="rounded " field={slice.primary.image} />
                     </div>
                 )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
+                {isFilled.image(slice.primary.image) && (
+                    <div className="glass-container mt-16 w-fit">
+                        <div className="absolute inset-0 -z-10 bg-blue-300/10 blur-2xl filter"></div>
+                        <PrismicNextImage className="rounded " field={slice.primary.image} />
+                    </div>
+                )}
             </div>
         </Bounded>
     );
