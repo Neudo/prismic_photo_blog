@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${dmSans.variable} `}>
-        <body className="bg-[#232b2b] text-white" >
+        <body className="" >
         <SmoothScroller />
         <Header/>
         <main>{children}</main>

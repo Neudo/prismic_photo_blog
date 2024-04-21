@@ -10,3 +10,15 @@
     @apply absolute -inset-[10px] -z-10 rounded-xl border border-slate-100/20 bg-slate-200/10 backdrop-blur-md;
     content: "";
 }
+
+.got-filter::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+}
+
+img{
+    width: 100%;
+}

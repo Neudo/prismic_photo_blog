@@ -8,9 +8,7 @@ export default async function Header() {
     const settings = await client.getSingle("settings");
 
     return (
-        <div>
             <NavBar settings={settings} />
-        </div>
     );
 };
 

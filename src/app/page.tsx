@@ -31,6 +31,8 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "home");
 
+  console.log(home.data.slices);
+
   return <>
     <h1>{prismic.asText(home.data.title)}</h1>
     <SliceZone slices={home.data.slices} components={components} />

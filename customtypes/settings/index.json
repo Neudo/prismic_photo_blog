@@ -61,6 +61,79 @@
           }
         }
       }
+    },
+    "Réseaux sociaux": {
+      "facebook": {
+        "type": "Link",
+        "config": {
+          "label": "Facebook",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "tiktok": {
+        "type": "Link",
+        "config": {
+          "label": "Tiktok",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "instagram": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "youtube": {
+        "type": "Link",
+        "config": {
+          "label": "Youtube",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      }
+    },
+    "Image du menu": {
+      "image_haut": {
+        "type": "Image",
+        "config": {
+          "label": "Image haut",
+          "constraint": {
+            "width": 380,
+            "height": 215
+          },
+          "thumbnails": []
+        }
+      },
+      "image_millieu": {
+        "type": "Image",
+        "config": {
+          "label": "Image millieu",
+          "constraint": {
+            "width": 380,
+            "height": 215
+          },
+          "thumbnails": []
+        }
+      },
+      "image_bas": {
+        "type": "Image",
+        "config": {
+          "label": "Image bas",
+          "constraint": {
+            "width": 380,
+            "height": 215
+          },
+          "thumbnails": []
+        }
+      }
     }
   }
 }
