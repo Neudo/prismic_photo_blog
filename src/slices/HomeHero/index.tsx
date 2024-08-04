@@ -22,10 +22,9 @@ const Hero = async ({slice}: HeroProps): Promise<JSX.Element> => {
     const settings = await client.getSingle("settings");
     return (
 
-        <div className="max-w-[98vw] overflow-hidden  mt-[2vh] mx-auto">
 
             <Swiper
-                className={"h-[96vh] relative max-h-[96vh]"}
+                className={"h-screen relative"}
                 slidesPerView={1}
                 spaceBetween={30}
                 loop={true}
@@ -56,12 +55,12 @@ const Hero = async ({slice}: HeroProps): Promise<JSX.Element> => {
                     </nav>
                 </div>
                 {slice.items.map((item, index) => (
-                    <SwiperSlide className="max-h-[96vh] relative got-filter" key={index}>
-                        <PrismicNextImage className="rounded-3xl h-[96vh] object-cover" field={item.image_list}/>
+                    <SwiperSlide className="relative got-filter h-screen" key={index}>
+                        <PrismicNextImage className=" object-cover h-full" field={item.image_list}/>
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+
     );
 };
 

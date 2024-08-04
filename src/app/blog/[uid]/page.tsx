@@ -97,14 +97,12 @@ export default async function Page({ params }: { params: Params }) {
             <SliceZone slices={slices} components={components} />
 
             {/* Display the Recommended Posts section using the posts we requested earlier */}
-            <h2 className="font-bold text-3xl">Recommended Posts</h2>
+            <h2 className="font-bold text-3xl">Autres articles</h2>
             <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
                 {posts.map((post) => (
                     <PostCard key={post.id} post={post} />
                 ))}
             </section>
-
-            <Navigation client={client} />
         </div>
     );
 }

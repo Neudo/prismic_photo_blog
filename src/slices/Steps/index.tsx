@@ -17,11 +17,11 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
             data-slice-variation={slice.variation}
             className="text-white bg-primary-green min-h-[75vh]"
         >
-            <div className="flex items-start justify-between ">
-                <div className="w-[50%]">
+            <div className="flex items-start justify-between flex-col gap-2 md:flex-row md:gap-4">
+                <div className="md:w-[50%]">
                     <PrismicRichText field={slice.primary.titre} />
                 </div>
-                <ul className="w-[60%] max-h-[240px] overflow-hidden " >
+                <ul className="md:w-[60%] md:max-h-[240px] overflow-hidden" >
                     {slice.items.map((item, index) => (
                         <div key={index} className="mb-[80px]">
                             <PrismicRichText field={item.etapes} />

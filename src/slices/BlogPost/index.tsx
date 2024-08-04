@@ -4,6 +4,7 @@ import {createClient} from "@/prismicio";
 import {PrismicNextImage, PrismicNextLink} from "@prismicio/next";
 import clsx from "clsx";
 import Bounded from "@/components/Bounded";
+import { RichText } from "@/components/RichText";
 
 /**
  * Props for `BlogPost`.
@@ -41,7 +42,7 @@ const BlogPost = async ({slice }: BlogPostProps): Promise<JSX.Element> => {
                 {blogPosts.map((blogPost:any, index) => (
                     <div key={blogPost.id} className="grid gap-4 relative">
                         <h3> <PrismicText field={blogPost.data.title} /></h3>
-                        <PrismicRichText field={blogPost.data.description} />
+                        <RichText field={blogPost.data.description} />
 
                         <PrismicNextLink document={blogPost} className="after:absolute after:inset-0 hover:underline" >
                             Lire l article
