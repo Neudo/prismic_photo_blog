@@ -16,20 +16,19 @@ type NavBarProps = {
 }
 
 function NavBar({settings}: NavBarProps) {
-
-    console.log(settings.data)
-
-
+    const [isOpen, setIsOpen] = React.useState(false);
     return (
         <>
-            <header className="px-4 fixed w-[95vw] top-10 left-1/2 -translate-x-1/2 flex z-50 text-white" aria-label="Main">
-                <ul className="gap-6 flex w-full justify-between items-center">
-                    <li>AB</li>
-                    <li className="hover:cursor-pointer">Menu</li>
+            <header className="px-4 invert mix-blend-difference fixed w-[95vw] top-10 left-1/2 -translate-x-1/2 flex z-50 text-white" aria-label="Main">
+                <ul className="gap-6 flex w-full justify-between items-center text-black">
+                    <li><a href="/">AB</a></li>
+                    <li
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="hover:cursor-pointer">Menu</li>
                 </ul>
             </header>
 
-            <nav className="absolute top-0 left-0 z-40 w-full h-full bg-[#475149] overflow-hidden">
+            <nav className={`fixed top-0 ${isOpen ? 'left-0' : 'left-full' } transition-left duration-300 ease-out z-40 w-full h-full bg-primary-green overflow-hidden`}>
                 <div className="flex h-[95%] justify-between ml-[10vw]">
                     <div className="wrapper w-[60%] flex-col justify-between flex h-full ">
                         <ul className="flex flex-col text-white text-8xl uppercase mt-[110px]">

@@ -9,5 +9,8 @@ export const components = {
   contact_form: dynamic(() => import("./ContactForm")),
   hero: dynamic(() => import("./HomeHero")),
   image_full: dynamic(() => import("./ImageFull")),
+  item: dynamic(() => import("./Item")),
   rich_text: dynamic(() => import("./RichText")),
+  steps: dynamic(() => import("./Steps")),
+  text_image: dynamic(() => import("./TextImage")),
 };

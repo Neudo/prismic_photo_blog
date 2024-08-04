@@ -1,51 +1,80 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {PrismicText, SliceZone} from "@prismicio/react";
+
+import { SliceZone } from "@prismicio/react";
+import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Bounded from "@/components/Bounded";
-import {PrismicNextImage} from "@prismicio/next";
+import {PostCard} from "@/components/PostCard";
 
 type Params = { uid: string };
 
-export default async function Page({ params }: { params: Params }) {
-    const client = createClient();
-    const page = await client
-        .getByUID("blog_post", params.uid)
-        .catch(() => notFound());
-
-    return (
-        <Bounded as="article">
-            <h1 className="text-7xl font-medium">
-                All posts here
-            </h1>
-            {/*<SliceZone slices={page.data.slices} components={components} />*/}
-        </Bounded>
-    )
-}
+/**
+ * This page renders a Prismic Document dynamically based on the URL.
+ */
 
 export async function generateMetadata({
-                                           params,
-                                       }: {
-    params: Params;
+  params,
+}: {
+  params: Params;
 }): Promise<Metadata> {
-    const client = createClient();
-    const page = await client
-        .getByUID("blog_post", params.uid)
+  const client = createClient();
+  const page = await client
+      .getSingle("blog")
+
+  return {
+    title: prismic.asText(page.data.title),
+    description: page.data.meta_description,
+    openGraph: {
+      title: page.data.meta_title || undefined,
+      images: [
+        {
+          url: page.data.meta_image.url || "",
+        },
+      ],
+    },
+  };
+}
+
+export default async function Page({ params }: { params: Params }) {
+  const client = createClient();
+  const page = await client
+        .getSingle("blog")
         .catch(() => notFound());
 
-    return {
-        title: page.data.meta_title,
-        description: page.data.meta_description,
-    };
+  // Get all of the blog_post documents created on Prismic ordered by publication date
+  const posts = await client.getAllByType("blog_post", {
+    orderings: [
+      { field: "my.blog_post.publication_date", direction: "desc" },
+      { field: "document.first_publication_date", direction: "desc" },
+    ],
+  });
+
+  return <><SliceZone slices={page.data.slices} components={components} />
+    {/* Map over each of the blog posts created and display a `PostCard` for it */}
+    <section className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+      {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+      ))}
+    </section>
+  </>
 }
 
 export async function generateStaticParams() {
-    const client = createClient();
-    const pages = await client.getAllByType("blog_post");
+  const client = createClient();
 
-    return pages.map((page) => {
-        return { uid: page.uid };
-    });
+  /**
+   * Query all Documents from the API, except the homepage.
+   */
+  const pages = await client.getAllByType("page", {
+    predicates: [prismic.filter.not("my.page.uid", "home")],
+  });
+
+  /**
+   * Define a path for every Document.
+   */
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
 }

@@ -1,0 +1,49 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "HomeHero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1"
+          }
+        },
+        "subTitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Sous titre",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          }
+        }
+      },
+      "items": {
+        "image_list": {
+          "type": "Image",
+          "config": {
+            "label": "Liste des images",
+            "constraint": {
+              "width": null,
+              "height": null
+            },
+            "thumbnails": []
+          }
+        }
+      }
+    }
+  ]
+}

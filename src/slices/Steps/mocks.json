@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titre": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Aware"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"etapes",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Aute dolor dolore culpa proident dolore consectetur cupidatat nulla esse labore dolor aliqua consequat sit. Ad ut cupidatat ullamco dolor nulla nulla in anim quis ut fugiat in labore reprehenderit. Ea ut deserunt laborum voluptate minim ad adipisicing sunt laboris aliquip ut proident aliquip do incididunt."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]

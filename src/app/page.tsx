@@ -5,6 +5,8 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { Navigation } from "@/components/Navigation";
+import { PostCard } from "@/components/PostCard";
 
 // This component renders your homepage.
 //
@@ -31,10 +33,29 @@ export default async function Index() {
   const client = createClient();
   const home = await client.getByUID("page", "home");
 
-  console.log(home.data.slices);
+  // Get all of the blog_post documents created on Prismic ordered by publication date
+  const posts = await client.getAllByType("blog_post", {
+    orderings: [
+      { field: "my.blog_post.publication_date", direction: "desc" },
+      { field: "document.first_publication_date", direction: "desc" },
+    ],
+      limit: 3,
+  });
 
-  return <>
-    <h1>{prismic.asText(home.data.title)}</h1>
-    <SliceZone slices={home.data.slices} components={components} />
-  </>
+  return (
+      <>
+        <Navigation client={client} />
+
+        <SliceZone slices={home.data.slices} components={components} />
+
+        {/* Map over each of the blog posts created and display a `PostCard` for it */}
+        <section className="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+          {posts.map((post) => (
+              <PostCard key={post.id} post={post} />
+          ))}
+        </section>
+
+        <Navigation client={client} />
+      </>
+  );
 }
