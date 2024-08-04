@@ -12,17 +12,16 @@ export const repositoryName = "alainbphoto"
  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
  */
 const routes: prismic.ClientConfig["routes"] = [
-  {
-    type: "page",
-    path: "/:uid",
-  },
-  {
-    type: "page",
-    uid: "home",
-    path: "/",
-  },
+  {type: "page", path: "/:uid"},
+  {type: "page", uid: "home", path: "/"},
+
   {type: "blog_post", path: "/blog/:uid"},
-  {type: "blog", path: "/blog"}
+  {type: "blog", path: "/blog"},
+
+  {type: "contact", path: "/contact"},
+
+  {type: "gallery", path: "/gallery"},
+  // {type: "category", path: "/gallery/:uid"},
 ];
 
 /**

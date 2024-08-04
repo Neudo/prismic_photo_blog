@@ -1,14 +1,26 @@
 {
   "format": "page",
   "id": "gallery",
+  "label": "Gallerie photo",
+  "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Titre",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
           "choices": {}
-        },
-        "fieldset": "Slice Zone",
-        "type": "Slices"
+        }
       }
     },
     "SEO & Metadata": {
@@ -38,8 +50,5 @@
         "type": "Text"
       }
     }
-  },
-  "label": "gallery",
-  "repeatable": false,
-  "status": true
+  }
 }

@@ -11,8 +11,8 @@ export const Navigation = async ({
     const navigation = await client.getSingle("settings");
 
     return (
-        <nav className="font-bold text-xl self-center">
-            <ul>
+        <nav className="font-bold text-xl self-center bg-black p-6">
+            <ul className="flex gap-3">
                 {isFilled.group(navigation.data.navigation) &&
                     navigation.data.navigation.map((item) => {
                         return (

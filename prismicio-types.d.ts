@@ -329,11 +329,22 @@ export type ContactDocument<Lang extends string = string> =
 type GalleryDocumentDataSlicesSlice = never;
 
 /**
- * Content for gallery documents
+ * Content for Gallerie photo documents
  */
 interface GalleryDocumentData {
   /**
-   * Slice Zone field in *gallery*
+   * Titre field in *Gallerie photo*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Gallerie photo*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -342,7 +353,7 @@ interface GalleryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<GalleryDocumentDataSlicesSlice> /**
-   * Meta Description field in *gallery*
+   * Meta Description field in *Gallerie photo*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -353,7 +364,7 @@ interface GalleryDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *gallery*
+   * Meta Image field in *Gallerie photo*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -364,7 +375,7 @@ interface GalleryDocumentData {
   meta_image: prismic.ImageField<never>;
 
   /**
-   * Meta Title field in *gallery*
+   * Meta Title field in *Gallerie photo*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -376,7 +387,7 @@ interface GalleryDocumentData {
 }
 
 /**
- * gallery document from Prismic
+ * Gallerie photo document from Prismic
  *
  * - **API ID**: `gallery`
  * - **Repeatable**: `false`

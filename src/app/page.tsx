@@ -1,11 +1,9 @@
 import { Metadata } from "next";
-
 import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { Navigation } from "@/components/Navigation";
 import { PostCard } from "@/components/PostCard";
 
 // This component renders your homepage.
