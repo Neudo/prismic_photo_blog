@@ -90,41 +90,6 @@
           "select": null
         }
       }
-    },
-    "Image du menu": {
-      "image_haut": {
-        "type": "Image",
-        "config": {
-          "label": "Image haut",
-          "constraint": {
-            "width": null,
-            "height": null
-          },
-          "thumbnails": []
-        }
-      },
-      "image_millieu": {
-        "type": "Image",
-        "config": {
-          "label": "Image millieu",
-          "constraint": {
-            "width": 380,
-            "height": 215
-          },
-          "thumbnails": []
-        }
-      },
-      "image_bas": {
-        "type": "Image",
-        "config": {
-          "label": "Image bas",
-          "constraint": {
-            "width": 380,
-            "height": 215
-          },
-          "thumbnails": []
-        }
-      }
     }
   }
 }

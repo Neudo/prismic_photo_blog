@@ -661,38 +661,7 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  youtube: prismic.LinkField /**
-   * Image haut field in *Settings*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.image_haut
-   * - **Tab**: Image du menu
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */;
-  image_haut: prismic.ImageField<never>;
-
-  /**
-   * Image millieu field in *Settings*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.image_millieu
-   * - **Tab**: Image du menu
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image_millieu: prismic.ImageField<never>;
-
-  /**
-   * Image bas field in *Settings*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.image_bas
-   * - **Tab**: Image du menu
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image_bas: prismic.ImageField<never>;
+  youtube: prismic.LinkField;
 }
 
 /**
