@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import Tempus from '@studio-freight/tempus';
 import Lenis from '@studio-freight/lenis';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react'
 
 export default function SmoothScroller() {
     const lenis = useRef<Lenis | null>(null);

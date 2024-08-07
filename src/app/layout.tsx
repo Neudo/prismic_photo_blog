@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Header from "@/components/Header/index"
 import Footer from "@/components/Footer"
 import SmoothScroller from "@/components/Lenis"
+import {Suspense} from "react";
 
 
 const dmSans = Inter({
@@ -21,7 +22,9 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${dmSans.variable} `}>
         <body className="" >
-        <SmoothScroller />
+        <Suspense>
+            <SmoothScroller />
+        </Suspense>
         <Header/>
         <main>{children}</main>
         <Footer/>
