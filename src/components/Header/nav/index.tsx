@@ -20,6 +20,7 @@ const Index: React.FC<NavBarProps> = ({ settings }) => {
             className="h-screen z-10 fixed right-0 top-0 text-white bg-primary-green">
             <div className="h-full p-[100px] flex flex-col justify-between ">
                 <div className="flex flex-col text-5xl gap-3 mt-[80px]">
+                    <a href="/">Accueil</a>
                     {settings.data.navigation.map((item: any, index: number) => (
                         <motion.div
                             key={item.label}
