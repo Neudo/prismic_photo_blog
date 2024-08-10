@@ -13,7 +13,7 @@ const NavBar: React.FC<NavBarProps> = ({ settings }) => {
 
     return (
         <>
-            <div className="fixed right-0 m-5 z-20 w-[80px] h-[80px] rounded-full bg-primary-green cursor-pointer flex items-center justify-center"
+            <div className={`fixed right-0 m-5 z-20 w-[60px] h-[60px] md:w-[80px] md:h-[80px] rounded-full ${isActive ? 'bg-white' : 'bg-primary-green'} cursor-pointer flex items-center justify-center`}
                  onClick={() => { setIsActive(!isActive); }} >
                 <div className={`burger ${isActive ? 'burgerActive' : ''}`}></div>
             </div>

@@ -72,6 +72,7 @@ h4{
 .burger{
     width: 100%;
 }
+
 .burger::after, .burger::before{
     content: "";
     display: block;
@@ -80,7 +81,7 @@ h4{
     margin: auto;
     background-color: white;
     position: relative;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s ease;
 }
 
 .burger::before{
@@ -94,15 +95,18 @@ h4{
 .burger.burgerActive::after{
     transform: rotate(45deg);
     top: -1px;
+    background-color: #475149;
+
 }
 
 .burger.burgerActive::before{
     transform: rotate(-45deg);
     top: 0;
+    background-color: #475149;
 }
 
-.svgCurve{
 
+.svgCurve{
     position: absolute;
     top: 0;
     left: -99px;

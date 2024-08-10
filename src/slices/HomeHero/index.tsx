@@ -42,7 +42,7 @@ const Hero = async ({slice}: HeroProps): Promise<JSX.Element> => {
                         </p>
                     )}
                     <nav
-                        className="flex justify-center z-10"
+                        className="hidden md:flex justify-center z-10"
                         aria-label="Main">
                         <ul className="gap-6 flex p-4  bg-indigo-50/50 transition ease-in hover:bg-indigo-50 text-black rounded-lg">
                             {settings.data.navigation.map((item) => (
