@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: Params }) {
         page.data;
 
     return (
-        <div className="flex flex-col gap-12 w-full max-w-3xl">
+        <div className="flex flex-col gap-12 w-full max-w-5xl mx-auto">
             <Navigation client={client} />
 
             {/* Display the "hero" section of the blog post */}
@@ -89,7 +89,7 @@ export default async function Page({ params }: { params: Params }) {
                 <PrismicNextImage
                     field={featured_image}
                     sizes="100vw"
-                    className="w-full max-w-3xl max-h-96 rounded-xl object-cover"
+                    className="w-full max-w-7xl max-h-96 rounded-xl object-cover"
                 />
             </section>
 
@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: Params }) {
 
             {/* Display the Recommended Posts section using the posts we requested earlier */}
             <h2 className="font-bold text-3xl">Autres articles</h2>
-            <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
+            <section className="grid grid-cols-1 gap-8 max-w-7xl w-full">
                 {posts.map((post) => (
                     <PostCard key={post.id} post={post} />
                 ))}

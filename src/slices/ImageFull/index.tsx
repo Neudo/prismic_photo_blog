@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import Bounded from "@/components/Bounded";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `ImageFull`.
@@ -12,12 +12,10 @@ export type ImageFullProps = SliceComponentProps<Content.ImageFullSlice>;
  */
 const ImageFull = ({ slice }: ImageFullProps): JSX.Element => {
   return (
-    <Bounded
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for image_full (variation: {slice.variation}) Slices
-    </Bounded>
+      <section>
+        <PrismicNextImage field={slice.primary.image} />
+      </section>
+
   );
 };
 

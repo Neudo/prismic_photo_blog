@@ -115,3 +115,9 @@ h4{
     fill: rgb(71, 81, 73);
     stroke: none;
 }
+
+.absolute-link::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+}
