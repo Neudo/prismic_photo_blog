@@ -12,7 +12,7 @@ export const PostCard = ({
     const { data } = post;
 
     return (
-        <div className="flex relative flex-col wrap w-full xl:w-1/3 gap-2 justify-start bg-slate-50 rounded-xl hover:[box-shadow:2px_3px_20px_0_#e3e3e3]">
+        <div className="bg-slate-200 rounded-xl hover:[box-shadow:2px_3px_20px_0_#e3e3e3]">
             <PrismicNextImage
                 field={data.featured_image}
                 sizes="100vw"
@@ -20,12 +20,12 @@ export const PostCard = ({
 
             <div className="flex flex-col gap-3 p-6">
                 <div className="flex flex-col w-full gap-1">
-                    <time dateTime={dateConverter(data?.publication_date ? data.publication_date.toString() : "")} className="text-sm opacity-75 transition-all ease text-slate-700 border-b-2 w-min pb-1">
+                    <time dateTime={dateConverter(data?.publication_date ? data.publication_date.toString() : "")} className="text-sm opacity-75 transition-all ease text-slate-700 border-b-2 w-full pb-1">
                         {dateConverter(data?.publication_date ? data.publication_date.toString() : "")}
                     </time>
                     <div className="hover:opacity-75 duration-300 ease-in-out transition-all">
                         <PrismicLink document={post} className="absolute-link">
-                            <h2 className="font-bold text-xl m-0">
+                            <h2 className="font-bold text-xl m-0 color-green ">
                                 <PrismicText field={data.title} />
                             </h2>
                         </PrismicLink>
