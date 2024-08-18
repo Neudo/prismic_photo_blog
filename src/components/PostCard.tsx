@@ -18,7 +18,7 @@ export const PostCard = ({
                 sizes="100vw"
                 className="w-full h-[240px] rounded-xl rounded-b-none object-cover"/>
 
-            <div className="flex flex-col gap-3 p-6">
+            <div className="flex flex-col gap-3 p-6 relative">
                 <div className="flex flex-col w-full gap-1">
                     <time dateTime={dateConverter(data?.publication_date ? data.publication_date.toString() : "")} className="text-sm opacity-75 transition-all ease text-slate-700 border-b-2 w-full pb-1">
                         {dateConverter(data?.publication_date ? data.publication_date.toString() : "")}
