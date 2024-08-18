@@ -20,8 +20,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${dmSans.variable} `}>
-        <body className="" >
+        <html lang="fr-FR" className={`${dmSans.variable} `}>
+        <body >
         <Suspense>
             <SmoothScroller />
         </Suspense>

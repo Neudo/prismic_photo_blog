@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: Params }) {
     ],
   });
 
-  return <><SliceZone slices={page.data.slices} components={components}/>
+  return <div className="bg-gray-800"><SliceZone slices={page.data.slices} components={components}/>
     {/* Map over each of the blog posts created and display a `PostCard` for it */}
     <h1 className="container mx-auto max-w-screen-xl pt-16">Blog</h1>
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-16 container mx-auto max-w-screen-xl">
@@ -60,7 +60,7 @@ export default async function Page({ params }: { params: Params }) {
           <PostCard key={post.id} post={post}/>
       ))}
     </section>
-  </>
+  </div>
 }
 
 export async function generateStaticParams() {

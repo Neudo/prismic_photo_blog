@@ -68,41 +68,43 @@ export default async function Page({ params }: { params: Params }) {
         page.data;
 
     return (
-        <div className="flex flex-col gap-12 w-full max-w-5xl mx-auto">
-            <Navigation client={client} />
+        <div className="bg-gray-800">
+            <div className="flex flex-col gap-12 w-full max-w-5xl mx-auto">
+                <Navigation client={client} />
 
-            {/* Display the "hero" section of the blog post */}
-            <section className="flex flex-col gap-12">
-                <div className="flex flex-col items-center gap-3 w-full">
-                    <div className="flex flex-col gap-6 items-center">
-                        <p className="opacity-75 border-b-2 w-min pb-1">
-                            {new Date(publication_date || "").toLocaleDateString()}
-                        </p>
+                {/* Display the "hero" section of the blog post */}
+                <section className="flex flex-col gap-12">
+                    <div className="flex flex-col items-center gap-3 w-full">
+                        <div className="flex flex-col gap-6 items-center">
+                            <p className="opacity-75 border-b-2 w-min pb-1">
+                                {new Date(publication_date || "").toLocaleDateString()}
+                            </p>
+                            <div className="text-center">
+                                <RichText field={title} />
+                            </div>
+                        </div>
                         <div className="text-center">
-                            <RichText field={title} />
+                            <RichText field={description} />
                         </div>
                     </div>
-                    <div className="text-center">
-                        <RichText field={description} />
-                    </div>
-                </div>
-                <PrismicNextImage
-                    field={featured_image}
-                    sizes="100vw"
-                    className="w-full max-w-7xl max-h-96 rounded-xl object-cover"
-                />
-            </section>
+                    <PrismicNextImage
+                        field={featured_image}
+                        sizes="100vw"
+                        className="w-full max-w-7xl max-h-96 rounded-xl object-cover"
+                    />
+                </section>
 
-            {/* Display the content of the blog post */}
-            <SliceZone slices={slices} components={components} />
+                {/* Display the content of the blog post */}
+                <SliceZone slices={slices} components={components} />
 
-            {/* Display the Recommended Posts section using the posts we requested earlier */}
-            <h2 className="font-bold text-3xl">Autres articles</h2>
-            <section className="grid grid-cols-1 gap-8 max-w-7xl w-full">
-                {posts.map((post) => (
-                    <PostCard key={post.id} post={post} />
-                ))}
-            </section>
+                {/* Display the Recommended Posts section using the posts we requested earlier */}
+                <h2 className="font-bold text-3xl">Autres articles</h2>
+                <section className="grid grid-cols-1 gap-8 max-w-7xl w-full">
+                    {posts.map((post) => (
+                        <PostCard key={post.id} post={post} />
+                    ))}
+                </section>
+            </div>
         </div>
     );
 }
