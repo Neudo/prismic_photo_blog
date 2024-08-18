@@ -37,12 +37,6 @@ export async function generateMetadata({
   };
 }
 
-export async function getStaticPaths() {
-  return {
-    // The paths to be pre-rendered at build time. E.g. /post/1, /post/2, etc
-    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
-  }
-}
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
