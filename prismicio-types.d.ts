@@ -261,6 +261,104 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+type CategorieDocumentDataSlicesSlice = ImagesSlice;
+
+/**
+ * Content for Catégorie de photo documents
+ */
+interface CategorieDocumentData {
+  /**
+   * Nom de la catégorie field in *Catégorie de photo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Description field in *Catégorie de photo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Image mise en avant field in *Catégorie de photo*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.highlight_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  highlight_image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Catégorie de photo*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategorieDocumentDataSlicesSlice> /**
+   * Meta Description field in *Catégorie de photo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: categorie.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Catégorie de photo*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Catégorie de photo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: categorie.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Catégorie de photo document from Prismic
+ *
+ * - **API ID**: `categorie`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategorieDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategorieDocumentData>,
+    "categorie",
+    Lang
+  >;
+
 type ContactDocumentDataSlicesSlice = never;
 
 /**
@@ -572,31 +670,6 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
- * Item in *Settings → Catégories*
- */
-export interface SettingsDocumentDataCategoriesItem {
-  /**
-   * Image field in *Settings → Catégories*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[].image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Nom de la catégorie field in *Settings → Catégories*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[].category_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  category_name: prismic.KeyTextField;
-}
-
-/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -686,16 +759,7 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  youtube: prismic.LinkField /**
-   * Catégories field in *Settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[]
-   * - **Tab**: Catégories de photo
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */;
-  categories: prismic.GroupField<Simplify<SettingsDocumentDataCategoriesItem>>;
+  youtube: prismic.LinkField;
 }
 
 /**
@@ -718,6 +782,7 @@ export type AllDocumentTypes =
   | AboutDocument
   | BlogDocument
   | BlogPostDocument
+  | CategorieDocument
   | ContactDocument
   | GalleryDocument
   | PageDocument
@@ -1042,6 +1107,48 @@ export type ImageFullSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Images → Items*
+ */
+export interface ImagesSliceDefaultItem {
+  /**
+   * Image field in *Images → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: images.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Images Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ImagesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Images*
+ */
+type ImagesSliceVariation = ImagesSliceDefault;
+
+/**
+ * Images Shared Slice
+ *
+ * - **API ID**: `images`
+ * - **Description**: Images
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagesSlice = prismic.SharedSlice<"images", ImagesSliceVariation>;
+
+/**
  * Primary content in *Item → Primary*
  */
 export interface ItemSliceDefaultPrimary {
@@ -1300,6 +1407,9 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      CategorieDocument,
+      CategorieDocumentData,
+      CategorieDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
@@ -1315,7 +1425,6 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
-      SettingsDocumentDataCategoriesItem,
       AllDocumentTypes,
       BlogPostSlice,
       BlogPostSliceDefaultPrimary,
@@ -1343,6 +1452,10 @@ declare module "@prismicio/client" {
       ImageFullSliceDefaultPrimary,
       ImageFullSliceVariation,
       ImageFullSliceDefault,
+      ImagesSlice,
+      ImagesSliceDefaultItem,
+      ImagesSliceVariation,
+      ImagesSliceDefault,
       ItemSlice,
       ItemSliceDefaultPrimary,
       ItemSliceVariation,
