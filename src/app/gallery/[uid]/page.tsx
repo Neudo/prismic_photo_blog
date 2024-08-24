@@ -4,6 +4,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import Bounded from "@/components/Bounded";
 
 type Params = { uid: string };
 
@@ -13,7 +14,9 @@ export default async function Page({ params }: { params: Params }) {
         .getByUID("categorie", params.uid)
         .catch(() => notFound());
 
-    return <SliceZone slices={page.data.slices} components={components} />;
+    return (<Bounded>
+        <SliceZone slices={page.data.slices} components={components} />
+    </Bounded>)
 }
 
 export async function generateMetadata({

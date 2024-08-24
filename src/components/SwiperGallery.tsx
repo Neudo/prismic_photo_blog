@@ -21,7 +21,6 @@ interface SwiperGalleryProps {
 }
 
 function SwiperGallery({data}: SwiperGalleryProps) {
-    console.log(data);
     return (
         <Swiper
             spaceBetween={0}
