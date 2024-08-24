@@ -3,17 +3,21 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import TestMotion from "@/components/TestMotion";
+import { PrismicNextImage } from "@prismicio/next";
 
 
 
 export default async function Page() {
     const client = createClient();
     const page = await client.getSingle("gallery");
-
+    const settings = await client.getSingle("settings");
     return <>
-        <SliceZone slices={page.data.slices} components={components}/>
-        <TestMotion/>
+        {settings.data.categories.map((category, index) => (
+            <div key={index}>
+                <h1>{category.category_name}</h1>
+                <PrismicNextImage field={category.image} />
+            </div>
+        ))}
     </>
 }
 

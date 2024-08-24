@@ -572,6 +572,31 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → Catégories*
+ */
+export interface SettingsDocumentDataCategoriesItem {
+  /**
+   * Image field in *Settings → Catégories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Nom de la catégorie field in *Settings → Catégories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[].category_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category_name: prismic.KeyTextField;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -661,7 +686,16 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  youtube: prismic.LinkField;
+  youtube: prismic.LinkField /**
+   * Catégories field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[]
+   * - **Tab**: Catégories de photo
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */;
+  categories: prismic.GroupField<Simplify<SettingsDocumentDataCategoriesItem>>;
 }
 
 /**
@@ -1281,6 +1315,7 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataCategoriesItem,
       AllDocumentTypes,
       BlogPostSlice,
       BlogPostSliceDefaultPrimary,
