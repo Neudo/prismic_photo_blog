@@ -6,6 +6,7 @@ import Header from "@/components/Header/index"
 import Footer from "@/components/Footer"
 import SmoothScroller from "@/components/Lenis"
 import {Suspense} from "react";
+import PageTransititon from "@/components/page-transition/PageTransition";
 
 
 const dmSans = Inter({
@@ -26,7 +27,9 @@ export default function RootLayout({
             <SmoothScroller />
         </Suspense>
         <Header/>
-        <main>{children}</main>
+        <PageTransititon>
+            <main>{children}</main>
+        </PageTransititon>
         <Footer/>
         </body>
         <PrismicPreview repositoryName={repositoryName} />
