@@ -7,6 +7,7 @@ import Footer from "@/components/Footer"
 import SmoothScroller from "@/components/Lenis"
 import {Suspense} from "react";
 import {NavProvider} from "@/context/NavContext";
+import React from "react";
 
 
 const dmSans = Inter({
@@ -27,19 +28,21 @@ export default function RootLayout({
             <SmoothScroller />
         </Suspense>
         <NavProvider>
-        <Header/>
+            <Header/>
             <main>
                 <div id="inner">
                     <div id="slide" className="fixed top-0 left-0 w-screen h-screen bg-white z-20"/>
                     <div id="page">
                         <div id="opacity">
-                            {children}
+                            <React.StrictMode>
+                                {children}
+                            </React.StrictMode>
                         </div>
                     </div>
 
                 </div>
             </main>
-        <Footer/>
+            <Footer/>
         </NavProvider>
         </body>
         <PrismicPreview repositoryName={repositoryName} />

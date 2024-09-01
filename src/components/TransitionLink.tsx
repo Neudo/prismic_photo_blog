@@ -6,10 +6,10 @@ import {useNav} from "@/context/NavContext";
 
 interface LinkProps {
     data: {
-        label: string;
-        link: any;
+        label?: string;
+        link?: any;
         url: string;
-        name: string;
+        name?: string|'name';
         data: {
             name: string;
         }
@@ -19,6 +19,7 @@ interface LinkProps {
 
 
 function TransitionLink({data, simple_link}: LinkProps) {
+
     const router = useRouter();
     const { isActive, setIsActive } = useNav();
 
@@ -34,10 +35,9 @@ function TransitionLink({data, simple_link}: LinkProps) {
         const page = document.querySelector('#page')
         const opacity = document.querySelector('#opacity')
 
-        // console.log("--->",data.link.url)
-
         // To close the menu
         !simple_link ? await sleep(300) : null
+
 
         // EXIT ANIMATION :
         body?.classList.add('anim-on');
@@ -62,7 +62,7 @@ function TransitionLink({data, simple_link}: LinkProps) {
     }
 
     return simple_link ? (
-        <a  onClick={handleTransition} href={data.url}>{data.data.name}</a>
+        <a onClick={handleTransition} href={data.url}>{data.data.name}</a>
     ) : (
         <PrismicLink onClick={handleTransition} className="inline-flex min-h-11 items-center" field={data.link}>
             {data.label}

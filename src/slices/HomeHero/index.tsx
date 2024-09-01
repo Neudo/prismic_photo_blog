@@ -49,7 +49,7 @@ const Hero = async ({slice}: HeroProps): Promise<JSX.Element> => {
                     ))}
                 </ul>
             </nav>
-            <PrismicNextImage className=" object-cover h-full" field={slice.primary.hero_image} />
+            <PrismicNextImage className=" object-cover h-full rounded-3xl border-white border-[15px]" field={slice.primary.hero_image} />
 
         </div>
     )}

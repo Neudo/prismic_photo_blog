@@ -14,4 +14,5 @@ export const components = {
   rich_text: dynamic(() => import("./RichText")),
   steps: dynamic(() => import("./Steps")),
   text_image: dynamic(() => import("./TextImage")),
+  works: dynamic(() => import("./Works")),
 };

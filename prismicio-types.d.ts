@@ -501,6 +501,7 @@ export type GalleryDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | WorksSlice
   | ItemSlice
   | StepsSlice
   | TextImageSlice
@@ -1383,6 +1384,101 @@ export type TextImageSlice = prismic.SharedSlice<
   TextImageSliceVariation
 >;
 
+/**
+ * Primary content in *Works → Primary*
+ */
+export interface WorksSliceDefaultPrimary {
+  /**
+   * CTA field in *Works → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * Texte du CTA field in *Works → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.primary.cta_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_label: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Works → Items*
+ */
+export interface WorksSliceDefaultItem {
+  /**
+   * Images field in *Works → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.items[].images
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  images: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Works Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WorksSliceDefaultPrimary>,
+  Simplify<WorksSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *Works → Items*
+ */
+export interface WorksSliceWorksBottomItem {
+  /**
+   * Images field in *Works → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.items[].images
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  images: prismic.ImageField<never>;
+}
+
+/**
+ * Works - Partie basse variation for Works Slice
+ *
+ * - **API ID**: `worksBottom`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSliceWorksBottom = prismic.SharedSliceVariation<
+  "worksBottom",
+  Record<string, never>,
+  Simplify<WorksSliceWorksBottomItem>
+>;
+
+/**
+ * Slice variation for *Works*
+ */
+type WorksSliceVariation = WorksSliceDefault | WorksSliceWorksBottom;
+
+/**
+ * Works Shared Slice
+ *
+ * - **API ID**: `works`
+ * - **Description**: Works
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSlice = prismic.SharedSlice<"works", WorksSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1467,6 +1563,13 @@ declare module "@prismicio/client" {
       TextImageSliceDefaultPrimary,
       TextImageSliceVariation,
       TextImageSliceDefault,
+      WorksSlice,
+      WorksSliceDefaultPrimary,
+      WorksSliceDefaultItem,
+      WorksSliceWorksBottomItem,
+      WorksSliceVariation,
+      WorksSliceDefault,
+      WorksSliceWorksBottom,
     };
   }
 }
