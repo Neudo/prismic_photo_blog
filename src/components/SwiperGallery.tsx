@@ -3,18 +3,23 @@ import React from 'react';
 import {PrismicNextImage} from "@prismicio/next";
 // Import SwiperGallery React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import TransitionLink from "@/components/TransitionLink";
 
 // Import SwiperGallery styles
 import 'swiper/css';
 
 
 interface Category {
-    url: string | null;
+    label: string;
+    link: any;
+    name: string;
+    url: string;
     data: {
-        name: string | null;
+        name: string;
         highlight_image: any;
     }
 }
+
 
 interface SwiperGalleryProps {
     data: Category[];
@@ -30,11 +35,9 @@ function SwiperGallery({data}: SwiperGalleryProps) {
             className="w-full"
         >
 
-            {data.map((category, index) => (
+            {data.map((category:Category, index) => (
                 <SwiperSlide key={index}>
-                    <a href={category.url || '/gallery'}>
-                        <h1>{category.data.name}</h1>
-                    </a>
+                    <TransitionLink data={category} simple_link={true}  />
                     <PrismicNextImage field={category.data.highlight_image} />
                 </SwiperSlide>
             ))}

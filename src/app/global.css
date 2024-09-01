@@ -125,3 +125,49 @@ h4{
     position: absolute;
     inset: 0;
 }
+
+body{
+    transition-property: opacity, background-color, transform, filter;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+
+#inner.anim-on {
+
+}
+
+
+#slide{
+    transform: translateY(100vh);
+}
+#slide.anim-on {
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+
+}
+
+#inner{
+    background-color: black;
+}
+#page{
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    background-color: white;
+}
+
+#page.anim-on {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: scale(.9) translateY(-150px);
+    opacity: .5;
+}
+
+#opacity{
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+#opacity.anim-on {
+    opacity: 0;
+
+}
+

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { usePathname } from "next/navigation";
-import { PrismicLink } from "@prismicio/react";
 import { NavBarProps } from "@/components/Header/NavOuter";
 import { motion } from 'framer-motion';
 import { menuSlide, slide } from "@/components/Header/anim";
 import Curve from "@/components/Header/Curve/index";
+import TransitionLink from "@/components/TransitionLink";
 
 const Index: React.FC<NavBarProps> = ({ settings }) => {
     const pathname = usePathname();
@@ -18,9 +18,8 @@ const Index: React.FC<NavBarProps> = ({ settings }) => {
             animate="enter"
             exit="exit"
             className="h-screen z-10 fixed right-0 top-0 text-white bg-primary-green">
-            <div className="h-full p-[100px] flex flex-col justify-between ">
+            <div className="h-full p-[100px] flex flex-col justify-between">
                 <div className="flex flex-col text-5xl gap-3 mt-[80px]">
-                    <a href="/">Accueil</a>
                     {settings.data.navigation.map((item: any, index: number) => (
                         <motion.div
                             key={item.label}
@@ -31,9 +30,7 @@ const Index: React.FC<NavBarProps> = ({ settings }) => {
                             animate="enter"
                             exit="exit"
                             className="mb-[17px] relative flex items-center">
-                            <PrismicLink className="inline-flex min-h-11 items-center" field={item.link}>
-                                {item.label}
-                            </PrismicLink>
+                            <TransitionLink data={item} />
                         </motion.div>
                     ))}
                 </div>

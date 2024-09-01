@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: Params }) {
         page.data;
 
     return (
-        <div className="bg-gray-800">
+        <div>
             <div className="flex flex-col gap-12 w-full max-w-5xl mx-auto">
                 <Navigation client={client} />
 

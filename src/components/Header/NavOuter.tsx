@@ -3,13 +3,14 @@ import React from "react";
 import { Content } from "@prismicio/client";
 import Nav from "@/components/Header/nav/index";
 import { AnimatePresence } from "framer-motion";
+import { useNav} from "@/context/NavContext";
 
 export type NavBarProps = {
     settings: Content.SettingsDocument;
 };
 
-const NavBar: React.FC<NavBarProps> = ({ settings }) => {
-    const [isActive, setIsActive] = React.useState(false);
+const NavBar: React.FC<NavBarProps> = ({ settings}) => {
+    const { isActive, setIsActive } = useNav();
 
     return (
         <>
@@ -18,7 +19,7 @@ const NavBar: React.FC<NavBarProps> = ({ settings }) => {
                 <div className={`burger ${isActive ? 'burgerActive' : ''}`}></div>
             </div>
             <AnimatePresence mode="wait">
-                {isActive && <Nav settings={settings} />}
+                    {isActive && <Nav settings={settings} />}
             </AnimatePresence>
         </>
     );
