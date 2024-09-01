@@ -11,7 +11,6 @@ export type ImagesProps = SliceComponentProps<Content.ImagesSlice>;
  * Component for "Images" Slices.
  */
 const Images = ({ slice }: ImagesProps): JSX.Element => {
-  console.log(slice.items);
   return (
       <section
           data-slice-type={slice.slice_type}

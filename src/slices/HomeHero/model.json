@@ -29,21 +29,17 @@
             "allowTargetBlank": true,
             "single": "paragraph"
           }
-        }
-      },
-      "items": {
-        "image_list": {
+        },
+        "hero_image": {
           "type": "Image",
           "config": {
-            "label": "Liste des images",
-            "constraint": {
-              "width": null,
-              "height": null
-            },
+            "label": "Image pleine écran",
+            "constraint": {},
             "thumbnails": []
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

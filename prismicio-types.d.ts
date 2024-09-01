@@ -1017,21 +1017,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   subTitle: prismic.RichTextField;
-}
 
-/**
- * Primary content in *HomeHero → Items*
- */
-export interface HeroSliceDefaultItem {
   /**
-   * Liste des images field in *HomeHero → Items*
+   * Image pleine écran field in *HomeHero → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.items[].image_list
+   * - **API ID Path**: hero.primary.hero_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image_list: prismic.ImageField<never>;
+  hero_image: prismic.ImageField<never>;
 }
 
 /**
@@ -1044,7 +1039,7 @@ export interface HeroSliceDefaultItem {
 export type HeroSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<HeroSliceDefaultPrimary>,
-  Simplify<HeroSliceDefaultItem>
+  never
 >;
 
 /**
@@ -1445,7 +1440,6 @@ declare module "@prismicio/client" {
       ContactFormSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
-      HeroSliceDefaultItem,
       HeroSliceVariation,
       HeroSliceDefault,
       ImageFullSlice,

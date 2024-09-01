@@ -31,7 +31,6 @@ function SwiperGallery({data}: SwiperGalleryProps) {
             spaceBetween={15}
             slidesPerView={3}
             loop={true}
-            onSwiper={(swiper) => console.log(swiper)}
             className="w-full"
         >
 

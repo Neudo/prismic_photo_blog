@@ -21,36 +21,35 @@ interface LinkProps {
 function TransitionLink({data, simple_link}: LinkProps) {
     const router = useRouter();
     const { isActive, setIsActive } = useNav();
-    console.log(data.name)
-
 
     function sleep(ms: number) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     const handleTransition = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-
-
+        e.preventDefault()
         setIsActive ? setIsActive(false) : null
-        await sleep(300);
+        const body = document.querySelector('body')
+        const slide = document.querySelector('#slide')
+        const page = document.querySelector('#page')
+        const opacity = document.querySelector('#opacity')
 
+        // console.log("--->",data.link.url)
+
+        // To close the menu
+        !simple_link ? await sleep(300) : null
 
         // EXIT ANIMATION :
-        const body = document.querySelector('body');
-        const slide = document.querySelector('#slide');
-        const page = document.querySelector('#page');
-        const opacity = document.querySelector('#opacity');
         body?.classList.add('anim-on');
         slide?.classList.add('anim-on');
         page?.classList.add('anim-on');
         opacity?.classList.add('anim-on');
         body?.classList.add('page-transition');
 
-        await sleep(500);
+        await sleep(300);
         // SLEEP SOME TIME
         simple_link ? router.push(data.url): router.push(data.link.url) ;
-        await sleep(500);
+        await sleep(300);
 
 
 
