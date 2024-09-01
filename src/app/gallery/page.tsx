@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 import SwiperGallery from "@/components/SwiperGallery";
 import Bounded from "@/components/Bounded";
+
+
 export default async function Page() {
     const client = createClient();
     const page = await client.getSingle("gallery");
@@ -9,7 +11,7 @@ export default async function Page() {
 
     return <>
         <Bounded>
-            <SwiperGallery data={categories} />
+            <SwiperGallery data={categories}/>
         </Bounded>
     </>
 }

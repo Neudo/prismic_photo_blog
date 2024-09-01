@@ -8,12 +8,13 @@ import TransitionLink from "@/components/TransitionLink";
 // Import SwiperGallery styles
 import 'swiper/css';
 
-
 interface Category {
-    label: string;
-    link: any;
-    name: string;
+    id: string;
+    uid: string;
     url: string;
+    label: string;
+    link: string;
+    name: string;
     data: {
         name: string;
         highlight_image: any;
@@ -21,11 +22,8 @@ interface Category {
 }
 
 
-interface SwiperGalleryProps {
-    data: Category[];
-}
 
-function SwiperGallery({data}: SwiperGalleryProps) {
+function SwiperGallery({data}:any ) {
     return (
         <Swiper
             spaceBetween={15}
@@ -34,7 +32,7 @@ function SwiperGallery({data}: SwiperGalleryProps) {
             className="w-full"
         >
 
-            {data.map((category:Category, index) => (
+            {data.map((category:Category, index:number) => (
                 <SwiperSlide key={index}>
                     <TransitionLink data={category} simple_link={true}  />
                     <PrismicNextImage field={category.data.highlight_image} />
