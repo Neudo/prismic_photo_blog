@@ -5,6 +5,7 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PostCard } from "@/components/PostCard";
+import Bounded from "@/components/Bounded";
 
 // This component renders your homepage.
 //

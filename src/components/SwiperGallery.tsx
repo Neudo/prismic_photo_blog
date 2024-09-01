@@ -23,10 +23,11 @@ interface SwiperGalleryProps {
 function SwiperGallery({data}: SwiperGalleryProps) {
     return (
         <Swiper
-            spaceBetween={0}
-            slidesPerView={1}
+            spaceBetween={15}
+            slidesPerView={3}
             loop={true}
             onSwiper={(swiper) => console.log(swiper)}
+            className="w-full"
         >
 
             {data.map((category, index) => (
