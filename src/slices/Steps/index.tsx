@@ -22,12 +22,11 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
         offset: ['start start', 'end end'],
     })
 
-
     const scale4 = useTransform(scrollYProgress, [0, 1], [1,4])
     const scale5 = useTransform(scrollYProgress, [0, 1], [1,5])
     const scale6 = useTransform(scrollYProgress, [0, 1], [1,6])
     const scale8 = useTransform(scrollYProgress, [0, 1], [1,8])
-    const scale9 = useTransform(scrollYProgress, [0, 1], [1,9])
+    const scale3 = useTransform(scrollYProgress, [0, 1], [1,3])
 
     return (
         // This is the old code
@@ -69,7 +68,7 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
                     </div>
                 </motion.div>
 
-                <motion.div style={{scale: scale8}}
+                <motion.div style={{scale: scale3}}
                             className="el w-full h-full absolute top-0 flex items-center justify-center">
                     <div className="imageContainer w-[35vw] h-[25vh] relative top-[30vh] -left-[25vw] ">
                         <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
@@ -101,7 +100,7 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
                     </div>
                 </motion.div>
 
-                <motion.div style={{scale: scale9}}
+                <motion.div style={{scale: scale8}}
                             className="el w-full h-full absolute top-0 flex items-center justify-center">
                     <div className="imageContainer w-[41vw] h-[28vh] relative -top-[32vh] left-[3vw] ">
                         <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
