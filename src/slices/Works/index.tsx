@@ -41,15 +41,18 @@ const Works = ({ slice }: WorksProps): JSX.Element => {
         >
             <div className="flex gap-8">
                 {slice.items.map((item, index) => (
-                    <div key={index} className="mb-[20px] h-auto w-[35vw]">
-                        <PrismicNextImage className="" field={item.images} />
+                    <div key={index} className="mb-[20px] h-[400px] w-[700px]">
+                        <PrismicNextImage className=" object-cover" field={item.images} />
                     </div>
                 ))}
             </div>
-
-            <div className="text-center p-2 bg-gray-800 rounded-xl text-white inline-block mx-auto">
-                <TransitionLink data={ctaInfos} simple_link={false} />
-            </div>
+            {slice.primary.cta_label && slice.primary.cta && (
+            <div className="flex">
+                <div className="text-center py-2 px-4 bg-gray-800 rounded-xl text-white inline-block mx-auto">
+                    <TransitionLink data={ctaInfos} simple_link={false} />
+                </div>
+            </div>)
+            }
         </section>
     );
 };

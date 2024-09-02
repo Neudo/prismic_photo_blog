@@ -1264,6 +1264,76 @@ export interface StepsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   titre: prismic.RichTextField;
+
+  /**
+   * Image 1 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_1: prismic.ImageField<never>;
+
+  /**
+   * Image 2 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_2: prismic.ImageField<never>;
+
+  /**
+   * Image 3 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_3: prismic.ImageField<never>;
+
+  /**
+   * Image 4 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_4: prismic.ImageField<never>;
+
+  /**
+   * Image 5 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_5
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_5: prismic.ImageField<never>;
+
+  /**
+   * Image 6 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_6
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_6: prismic.ImageField<never>;
+
+  /**
+   * Image 7 field in *Steps → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.primary.image_7
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_7: prismic.ImageField<never>;
 }
 
 /**
@@ -1275,10 +1345,10 @@ export interface StepsSliceDefaultItem {
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: steps.items[].etapes
+   * - **API ID Path**: steps.items[].steps
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  etapes: prismic.RichTextField;
+  steps: prismic.RichTextField;
 }
 
 /**
@@ -1385,31 +1455,6 @@ export type TextImageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Works → Primary*
- */
-export interface WorksSliceDefaultPrimary {
-  /**
-   * CTA field in *Works → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: works.primary.cta
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  cta: prismic.LinkField;
-
-  /**
-   * Texte du CTA field in *Works → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: works.primary.cta_label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  cta_label: prismic.KeyTextField;
-}
-
-/**
  * Primary content in *Works → Items*
  */
 export interface WorksSliceDefaultItem {
@@ -1433,9 +1478,34 @@ export interface WorksSliceDefaultItem {
  */
 export type WorksSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<WorksSliceDefaultPrimary>,
+  Record<string, never>,
   Simplify<WorksSliceDefaultItem>
 >;
+
+/**
+ * Primary content in *Works → Primary*
+ */
+export interface WorksSliceWorksBottomPrimary {
+  /**
+   * cta field in *Works → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.primary.cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
+
+  /**
+   * Texte du CTA field in *Works → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: works.primary.cta_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_label: prismic.KeyTextField;
+}
 
 /**
  * Primary content in *Works → Items*
@@ -1461,7 +1531,7 @@ export interface WorksSliceWorksBottomItem {
  */
 export type WorksSliceWorksBottom = prismic.SharedSliceVariation<
   "worksBottom",
-  Record<string, never>,
+  Simplify<WorksSliceWorksBottomPrimary>,
   Simplify<WorksSliceWorksBottomItem>
 >;
 
@@ -1564,8 +1634,8 @@ declare module "@prismicio/client" {
       TextImageSliceVariation,
       TextImageSliceDefault,
       WorksSlice,
-      WorksSliceDefaultPrimary,
       WorksSliceDefaultItem,
+      WorksSliceWorksBottomPrimary,
       WorksSliceWorksBottomItem,
       WorksSliceVariation,
       WorksSliceDefault,

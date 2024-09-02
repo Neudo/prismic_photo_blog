@@ -11,23 +11,7 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {
-        "cta": {
-          "type": "Link",
-          "config": {
-            "label": "CTA",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "cta_label": {
-          "type": "Text",
-          "config": {
-            "label": "Texte du CTA",
-            "placeholder": ""
-          }
-        }
-      },
+      "primary": {},
       "items": {
         "images": {
           "type": "Image",
@@ -46,7 +30,23 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {},
+      "primary": {
+        "cta": {
+          "type": "Link",
+          "config": {
+            "label": "cta",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Texte du CTA",
+            "placeholder": ""
+          }
+        }
+      },
       "items": {
         "images": {
           "type": "Image",
