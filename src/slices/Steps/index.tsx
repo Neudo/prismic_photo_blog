@@ -86,7 +86,7 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
 
                 <motion.div style={{scale: scale4}}
                             className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[35vw] h-[30vh] relative top-0  ">
+                    <div className="imageContainer w-[25vw] h-[25vh] relative top-0  ">
                         <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
                                           field={slice.primary.image_5}/>
                     </div>
