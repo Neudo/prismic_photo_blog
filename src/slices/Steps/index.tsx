@@ -30,86 +30,88 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
 
     return (
         // This is the old code
-        // <Bounded
-        //     data-slice-type={slice.slice_type}
-        //     data-slice-variation={slice.variation}
-        //     className="text-white bg-primary-green min-h-[75vh]"
-        // >
-        //     <div className="flex items-start justify-between flex-col gap-2 md:flex-row md:gap-4">
-        //         <div className="md:w-[50%]">
-        //             <PrismicRichText field={slice.primary.titre} />
-        //         </div>
-        //         <ul className="md:w-[60%] md:max-h-[240px] overflow-hidden" >
-        //             {slice.items.map((item, index) => (
-        //                 <div key={index} className="mb-[80px]">
-        //                     <PrismicRichText field={item.steps} />
-        //                 </div>
-        //             ))}
-        //         </ul>
-        //     </div>
-        // </Bounded>
-        <div ref={container} className="h-[300vh] relative">
+        <>
+            <div ref={container} className="h-[300vh] relative">
 
-            <div className="sticky top-0 h-screen bg-primary-green overflow-hidden">
+                <div className="sticky top-0 h-screen bg-primary-green overflow-hidden">
 
-                <motion.div style={{scale: scale5}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[17vw] h-[45vh] relative -top-[20vh] -left-[28vw]">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_1}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale5}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[17vw] h-[45vh] relative -top-[20vh] -left-[28vw]">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_1}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale6}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[20vw] h-[25vh] relative top-[30vh] left-[5vw]">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_2}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale6}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[20vw] h-[25vh] relative top-[30vh] left-[5vw]">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_2}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale3}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[35vw] h-[25vh] relative top-[30vh] -left-[25vw] ">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_3}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale3}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[35vw] h-[25vh] relative top-[30vh] -left-[25vw] ">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_3}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale5}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[20vw] h-[30vh] relative top-0 left-[30vw] ">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_4}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale5}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[20vw] h-[30vh] relative top-0 left-[30vw] ">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_4}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale4}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[25vw] h-[25vh] relative top-0  ">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_5}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale4}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[25vw] h-[25vh] relative top-0  ">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_5}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale4}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[25vw] h-[25vh] relative top-[30vh] left-[30vw] ">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_6}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale4}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[25vw] h-[25vh] relative top-[30vh] left-[30vw] ">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_6}/>
+                        </div>
+                    </motion.div>
 
-                <motion.div style={{scale: scale8}}
-                            className="el w-full h-full absolute top-0 flex items-center justify-center">
-                    <div className="imageContainer w-[41vw] h-[28vh] relative -top-[32vh] left-[3vw] ">
-                        <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
-                                          field={slice.primary.image_7}/>
-                    </div>
-                </motion.div>
+                    <motion.div style={{scale: scale8}}
+                                className="el w-full h-full absolute top-0 flex items-center justify-center">
+                        <div className="imageContainer w-[41vw] h-[28vh] relative -top-[32vh] left-[3vw] ">
+                            <PrismicNextImage className="object-cover absolute w-full h-full inset-0"
+                                              field={slice.primary.image_7}/>
+                        </div>
+                    </motion.div>
 
+                </div>
             </div>
-        </div>
+            <Bounded
+                data-slice-type={slice.slice_type}
+                data-slice-variation={slice.variation}
+                className="text-white bg-primary-green min-h-[75vh]"
+            >
+                <div className="flex items-start justify-between flex-col gap-2 md:flex-row md:gap-4">
+                    <div className="md:w-[50%]">
+                        <PrismicRichText field={slice.primary.titre} />
+                    </div>
+                    <ul className="md:w-[60%]  overflow-hidden" >
+                        {slice.items.map((item, index) => (
+                            <div key={index} className="mb-[80px]">
+                                <PrismicRichText field={item.steps} />
+                            </div>
+                        ))}
+                    </ul>
+                </div>
+            </Bounded>
+        </>
     );
 };
 
