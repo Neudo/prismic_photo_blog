@@ -1,11 +1,11 @@
 'use client'
 import { Content } from "@prismicio/client";
-import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
+import { SliceComponentProps} from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 import {PrismicNextImage} from "@prismicio/next";
 import {useScroll, useTransform, motion} from "framer-motion";
 import {useRef} from "react";
-
+import Cards from "./Cards";
 
 /**
  * Props for `Steps`.
@@ -16,6 +16,8 @@ export type StepsProps = SliceComponentProps<Content.StepsSlice>;
  * Component for "Steps" Slices.
  */
 const Steps = ({ slice }: StepsProps): JSX.Element => {
+
+    //Anim Zoom
     const container = useRef(null)
     const {scrollYProgress} = useScroll({
         target: container,
@@ -29,7 +31,6 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
     const scale3 = useTransform(scrollYProgress, [0, 1], [1,3])
 
     return (
-        // This is the old code
         <>
             <div ref={container} className="h-[300vh] relative">
 
@@ -96,20 +97,9 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
             <Bounded
                 data-slice-type={slice.slice_type}
                 data-slice-variation={slice.variation}
-                className="text-white bg-primary-green min-h-[75vh]"
+                className="text-white bg-primary-green h-[130vh]"
             >
-                <div className="flex items-start justify-between flex-col gap-2 md:flex-row md:gap-4">
-                    <div className="md:w-[50%]">
-                        <PrismicRichText field={slice.primary.titre} />
-                    </div>
-                    <ul className="md:w-[60%]  overflow-hidden" >
-                        {slice.items.map((item, index) => (
-                            <div key={index} className="mb-[80px]">
-                                <PrismicRichText field={item.steps} />
-                            </div>
-                        ))}
-                    </ul>
-                </div>
+                <Cards data={slice} />
             </Bounded>
         </>
     );
