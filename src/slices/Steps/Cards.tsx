@@ -5,9 +5,7 @@ import {SliceComponentProps} from "@prismicio/react";
 import {RichText} from "@/components/RichText";
 import {useRef} from "react";
 import {useScroll, useTransform, motion} from "framer-motion";
-import useWindowDimensions from "slice-machine-ui/src/hooks/useWindowDimensions";
 import {breakPointsChecker} from "@/utils/breakPointsChecker";
-
 
 export type StepsProps = SliceComponentProps<Content.StepsSlice>;
 interface CardProps {
