@@ -9,7 +9,7 @@ import {breakPointsChecker} from "@/utils/breakPointsChecker";
 
 export type StepsProps = SliceComponentProps<Content.StepsSlice>;
 interface CardProps {
-    index: number;
+    key: number;
     item: any;
 }
 
@@ -19,7 +19,7 @@ interface CardsProps {
 
 
 
-const Card = ({index, item}: CardProps) => {
+const Card = ({key, item}: CardProps) => {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const Card = ({index, item}: CardProps) => {
     const translate = useTransform(scrollYProgress, [0, 1], ['0vw', '60vw']);
 
     return (
-        <motion.li ref={cardRef} style={!isMobile ? {translateX: translate} : {translateY: translate}} key={index}
+        <motion.li ref={cardRef} style={!isMobile ? {translateX: translate} : {translateY: translate}} key={key}
                    className="mb-[80px] rounded bg-slate-200 px-6 py-4 border-black text-black">
             <RichText field={item.steps}/>
         </motion.li>
@@ -58,7 +58,7 @@ const Cards = ({data}: CardsProps): JSX.Element => {
                 <ul  className="">
                     {data.items.map((item, index) => (
 
-                        <Card index={index} item={item} />
+                        <Card key={index}  item={item} />
                     ))}
                 </ul>
             </div>
