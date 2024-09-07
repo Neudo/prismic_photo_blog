@@ -12,7 +12,7 @@ export const richTextComponents: JSXMapSerializer = {
         <h1 className="font-bold text-8xl">{children}</h1>
     ),
     heading2: ({ children }) => <h2 className="font-bold text-6xl">{children}</h2>,
-    heading3: ({ children }) => <h3 className="font-bold text-4lg">{children}</h3>,
+    heading3: ({ children }) => <h3 className="font-bold text-4lg mb-3 md:mb-6">{children}</h3>,
     paragraph: ({ children }) => <p>{children}</p>,
     hyperlink: ({ children, node }) => (
         <PrismicLink field={node.data} className="font-bold underline">{children}</PrismicLink>

@@ -1,9 +1,10 @@
 'use client'
 import React from 'react';
-import {PrismicNextImage} from "@prismicio/next";
-// Import SwiperGallery React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import TransitionLink from "@/components/TransitionLink";
+import * as THREE from 'three';
+import { useRef, useState } from 'react';
+import {Canvas, useFrame, useLoader} from '@react-three/fiber';
+import { MeshDistortMaterial, Image } from '@react-three/drei';
+
 
 // Import SwiperGallery styles
 import 'swiper/css';
@@ -21,24 +22,42 @@ interface Category {
     }
 }
 
+interface FlagProps {
+    imagesUrl: string;
+    key: number;
+    flagIndex: number;
+}
 
 
-function SwiperGallery({data}:any ) {
+function Flag({ imagesUrl, key, flagIndex }: FlagProps) {
+    const distortRef = useRef<any>(null);
+    const [hovered, hover] = useState(false);
+
+    // Charger la texture de l'image
+    const texture = useLoader(THREE.TextureLoader, imagesUrl);
+
+    useFrame(() => {
+        distortRef.current.distort = THREE.MathUtils.lerp(distortRef.current.distort, hovered ? 0.25 : 0, hovered ? 0.05 : 0.2);
+    });
+
     return (
-        <Swiper
-            spaceBetween={15}
-            slidesPerView={3}
-            loop={true}
-            className="w-full"
-        >
+        <mesh position={[flagIndex*6,0,0]} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)} scale={[2, 4, 1]}>
+            <planeGeometry args={[3, 1, 32, 32]} />
+            <MeshDistortMaterial ref={distortRef} speed={1} map={texture} />
+        </mesh>
+    );
+}
 
-            {data.map((category:Category, index:number) => (
-                <SwiperSlide key={index}>
-                    <TransitionLink data={category} simple_link={true}  />
-                    <PrismicNextImage field={category.data.highlight_image} />
-                </SwiperSlide>
+function SwiperGallery({data}: any) {
+    const imagesUrl = data.map((category: Category) => category.data.highlight_image.url)
+
+    return (
+        <Canvas>
+            <ambientLight/>
+            {imagesUrl.map((url, index) => (
+                <Flag imagesUrl={url} key={index} flagIndex={index} />
             ))}
-        </Swiper>
+        </Canvas>
     );
 }
 

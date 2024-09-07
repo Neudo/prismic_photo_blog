@@ -17,6 +17,7 @@
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.3",
+    "@react-three/drei": "^9.112.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/tempus": "^0.0.44",
     "clsx": "^2.1.0",

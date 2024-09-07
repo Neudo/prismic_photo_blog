@@ -10,6 +10,7 @@ export default async function Page() {
     const categories = await client.getAllByType("categorie");
 
     return <>
+            <h1 className="container mx-auto max-w-screen-xl pt-16">Galerie photo</h1>
         <Bounded>
             <SwiperGallery data={categories}/>
         </Bounded>

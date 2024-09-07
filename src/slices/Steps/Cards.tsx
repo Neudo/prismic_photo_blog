@@ -37,7 +37,7 @@ const Card = ({key, item}: CardProps) => {
 
     return (
         <motion.li ref={cardRef} style={!isMobile ? {translateX: translate} : {translateY: translate}} key={key}
-                   className="mb-[80px] rounded bg-slate-200 px-6 py-4 border-black text-black">
+                   className="mb-[80px] rounded bg-slate-200 px-4 py-6 md:px-14 md:py-10 border-black text-black">
             <RichText field={item.steps}/>
         </motion.li>
     )
@@ -57,7 +57,6 @@ const Cards = ({data}: CardsProps): JSX.Element => {
 
                 <ul  className="">
                     {data.items.map((item, index) => (
-
                         <Card key={index}  item={item} />
                     ))}
                 </ul>
