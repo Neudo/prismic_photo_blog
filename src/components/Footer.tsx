@@ -1,18 +1,25 @@
 import React from 'react';
 import {createClient} from "@/prismicio";
-import Logo from "@/components/Logo";
 import {PrismicNextLink} from "@prismicio/next";
-import Link from "next/link";
+import {headers} from 'next/headers';
 
 export default async function Footer(){
     const client = createClient();
     const settings = await client.getSingle("settings");
 
+    const headersList = headers();
+    const referer = headersList.get('referer'); // L'URL précédente
+    const host = headersList.get('host'); // Nom de l'hôte
+
+    console.log(host+'/gallery')
+    console.log(referer)
+
+
     return (
-        <footer className="flex flex-col md:flex-row mt-10 items-center justify-between p-5 border-t border-slate-600 " >
+        <footer className={`flex ${referer && referer.includes('gallery') ? 'hidden' : '' } flex-col md:flex-row mt-10 items-center justify-between p-5 border-t border-slate-600`}  >
                 {/*<Logo />*/}
 
-            <span className="sr-only" >Alainb photo.fr Home page</span>
+            <span className="sr-only" >Alainbphoto.fr Home page</span>
             <nav>
                 <ul className="gap-6 flex">
                     {settings.data.navigation.map((item) => (
