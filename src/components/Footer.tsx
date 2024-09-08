@@ -8,12 +8,7 @@ export default async function Footer(){
     const settings = await client.getSingle("settings");
 
     const headersList = headers();
-    const referer = headersList.get('referer'); // L'URL précédente
-    const host = headersList.get('host'); // Nom de l'hôte
-
-    console.log(host+'/gallery')
-    console.log(referer)
-
+    const referer = headersList.get('referer');
 
     return (
         <footer className={`flex ${referer && referer.includes('gallery') ? 'hidden' : '' } flex-col md:flex-row mt-10 items-center justify-between p-5 border-t border-slate-600`}  >

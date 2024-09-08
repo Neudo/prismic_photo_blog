@@ -23,8 +23,9 @@ const Card = ({key, item}: CardProps) => {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
+        console.log('use effect fired')
          setIsMobile(breakPointsChecker(window.innerWidth).isMobile)
-    }, [])
+    }, [window.innerWidth])
 
 
 

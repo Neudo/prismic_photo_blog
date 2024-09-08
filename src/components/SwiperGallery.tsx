@@ -2,8 +2,8 @@
 import React from 'react';
 import * as THREE from 'three';
 import { useRef, useState } from 'react';
-import {Canvas, useFrame, useLoader} from '@react-three/fiber';
-import {MeshDistortMaterial, Image, ScrollControls, Scroll, Environment} from '@react-three/drei';
+import {Canvas, useFrame, useLoader, useThree} from '@react-three/fiber';
+import {MeshDistortMaterial, ScrollControls, Scroll, Environment, useCursor} from '@react-three/drei';
 
 
 // Import SwiperGallery styles
@@ -17,13 +17,14 @@ interface Category {
     link: string;
     name: string;
     data: {
+        url: string;
         name: string;
         highlight_image: any;
     }
 }
 
 interface FlagProps {
-    imagesUrl: string;
+    item: Category;
     key: number;
     flagIndex: number;
 }
@@ -52,11 +53,17 @@ function Background() {
     )
 }
 
-function Flag({ imagesUrl, key, flagIndex }: FlagProps) {
+function Flag({ item, flagIndex }: FlagProps) {
     const distortRef = useRef<any>(null);
     const [hovered, hover] = useState(false);
+    useCursor(hovered);
 
-    const texture = useLoader(THREE.TextureLoader, imagesUrl);
+    const texture = useLoader(THREE.TextureLoader, item.data.highlight_image.url);
+
+    const goToSingle = (url: string) => {
+        window.location.href = url;
+    }
+
 
     useFrame(() => {
         distortRef.current.distort = THREE.MathUtils.lerp(distortRef.current.distort, hovered ? 0.25 : 0, hovered ? 0.05 : 0.2);
@@ -67,16 +74,20 @@ function Flag({ imagesUrl, key, flagIndex }: FlagProps) {
               onPointerOver={() => hover(true)}
               onPointerOut={() => hover(false)}
               scale={[2, 4, 1]}
+              onClick={() => goToSingle(item.url) }
         >
             <planeGeometry args={[3, 1, 32, 32]} />
-            <MeshDistortMaterial ref={distortRef} speed={1} map={texture} />
+            <MeshDistortMaterial ref={distortRef} speed={.6} map={texture} />
 
         </mesh>
     );
 }
 
 function SwiperGallery({data}: any) {
+
+
     const imagesUrl = data.map((category: Category) => category.data.highlight_image.url)
+    const urls = data.map((category: Category) =>category.url)
 
     return (
         <Canvas>
@@ -85,7 +96,7 @@ function SwiperGallery({data}: any) {
                 intensity={2.3}
             />
             <ScrollControls
-                pages={imagesUrl.length}
+                pages={imagesUrl.length -1}
                 damping={0.1}
                 horizontal={true}
             >
@@ -95,8 +106,8 @@ function SwiperGallery({data}: any) {
 
                 <Scroll>
                     {/* Canvas contents in here will scroll along */}
-                    {imagesUrl.map((url, index) => (
-                        <Flag imagesUrl={url} key={index} flagIndex={index} />
+                    {data.map((item: Category, index: number) => (
+                        <Flag item={item} key={index} flagIndex={index} />
                     ))}
                 </Scroll>
             </ScrollControls>

@@ -1,4 +1,5 @@
 export const breakPointsChecker = (width: number) => {
+    console.log('firedd')
     let isMobile = false;
     let isTablet = false;
     let isDesktop = false;
@@ -14,4 +15,3 @@ export const breakPointsChecker = (width: number) => {
     }
     return {isMobile, isTablet, isDesktop};
 }
-

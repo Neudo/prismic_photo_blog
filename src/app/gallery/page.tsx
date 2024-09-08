@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 import SwiperGallery from "@/components/SwiperGallery";
-import Bounded from "@/components/Bounded";
 
 
 export default async function Page() {
