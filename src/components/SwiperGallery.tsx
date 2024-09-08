@@ -102,7 +102,7 @@ function SwiperGallery({data}: any) {
                 horizontal={true}
             >
                 {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
-                <MiniMap />
+                {/*<MiniMap />*/}
                 <Background />
 
                 <Scroll>

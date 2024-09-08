@@ -9,6 +9,7 @@ export default async function Footer(){
 
     const headersList = headers();
     const referer = headersList.get('referer');
+    console.log(referer)
 
     return (
         <footer className={`flex ${referer && referer.includes('gallery') ? 'hidden' : '' } flex-col md:flex-row mt-10 items-center justify-between p-5 border-t border-slate-600`}  >

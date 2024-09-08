@@ -9,8 +9,6 @@ export interface CtaProps {
 }
 
 function Cta({data}: CtaProps) {
-    // console.log('in CTA ->>>>>--->>>>>>')
-    // console.log(data.title, data.url)
     return (
         <div className="flex flex-col items-center gap-3 w-full">
             <div className="flex flex-col gap-6 items-center">

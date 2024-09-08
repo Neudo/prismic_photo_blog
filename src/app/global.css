@@ -10,6 +10,10 @@ body{
     background-color: #475149;
 }
 
+.bg-dark {
+    background-color: #1c1c1c;
+}
+
 .color-green{
     color: #475149;
 }
