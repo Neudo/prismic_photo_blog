@@ -58,8 +58,9 @@ function Flag({ item, flagIndex }: FlagProps) {
     const [hovered, hover] = useState(false);
     useCursor(hovered);
 
-    const texture = useLoader(THREE.TextureLoader, item.data.highlight_image.url);
-
+    // const texture = useLoader(THREE.TextureLoader, item.data.highlight_image.url);
+    const textures = useLoader(THREE.TextureLoader, item.data.highlight_image.url);
+    const texture = Array.isArray(textures) ? textures[0] : textures;
     const goToSingle = (url: string) => {
         window.location.href = url;
     }
