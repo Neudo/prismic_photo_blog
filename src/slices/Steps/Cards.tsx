@@ -24,7 +24,7 @@ const Card = ({key, item}: CardProps) => {
 
     useEffect(() => {
          setIsMobile(breakPointsChecker(window.innerWidth).isMobile)
-    }, [window.innerWidth])
+    }, [])
 
 
 

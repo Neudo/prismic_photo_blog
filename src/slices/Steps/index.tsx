@@ -97,7 +97,7 @@ const Steps = ({ slice }: StepsProps): JSX.Element => {
             <Bounded
                 data-slice-type={slice.slice_type}
                 data-slice-variation={slice.variation}
-                className="text-white bg-primary-green"
+                className="text-white bg-primary-green overflow-x-hidden"
             >
                 <Cards data={slice} />
             </Bounded>
