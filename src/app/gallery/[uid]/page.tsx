@@ -14,9 +14,13 @@ export default async function Page({ params }: { params: Params }) {
         .getByUID("categorie", params.uid)
         .catch(() => notFound());
 
-    return (<Bounded>
-        <SliceZone slices={page.data.slices} components={components} />
-    </Bounded>)
+    return (
+        <div className="bg-dark min-h-screen">
+            <Bounded>
+                <SliceZone slices={page.data.slices} components={components} />
+            </Bounded>
+        </div>
+    )
 }
 
 export async function generateMetadata({

@@ -10,7 +10,8 @@ export default async function Footer(){
     const headersList = headers();
     const referer = headersList.get('referer');
 
-    console.log("This is referer ->",referer)
+
+
 
 
     return (
