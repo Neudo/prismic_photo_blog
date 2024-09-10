@@ -110,7 +110,7 @@ function SwiperGallery({ data }: any) {
         <Scroll>
           {/* Canvas contents in here will scroll along */}
           {data.map((item: Category, index: number) => (
-            <Flag item={item} flagIndex={index} />
+            <Flag key={index} item={item} flagIndex={index} />
           ))}
         </Scroll>
         <Scroll html>
