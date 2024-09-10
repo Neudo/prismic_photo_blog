@@ -64,7 +64,7 @@ function TransitionLink({data, simple_link}: LinkProps) {
     return simple_link ? (
         <a onClick={handleTransition} href={data.url}>{data.data.name}</a>
     ) : (
-        <PrismicLink onClick={handleTransition} className="inline-flex min-h-11 items-center" field={data.link}>
+        <PrismicLink onClick={handleTransition} className="inline-flex min-h-6 md:min-h-11 items-center" field={data.link}>
             {data.label}
         </PrismicLink>
     );

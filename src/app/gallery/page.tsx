@@ -12,7 +12,7 @@ export default async function Page() {
 
     return <>
         <div className="bg-dark">
-            <h1 className="container mx-auto max-w-screen-xl pt-16 absolute top-0 left-1/2 text-slate-300 -translate-x-1/2">Galerie photo</h1>
+            <h1 className="container mx-auto max-w-screen-xl pt-16 absolute top-2 left-2 md:left-1/2 text-slate-300 md:-translate-x-1/2">Galerie photo</h1>
             <SwiperGallery data={categories}/>
         </div>
     </>
