@@ -14,20 +14,26 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.0.2",
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.3",
     "@react-three/drei": "^9.112.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/tempus": "^0.0.44",
+    "@vercel/speed-insights": "^1.0.12",
     "clsx": "^2.1.0",
     "framer-motion": "^11.3.21",
     "next": "^14.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-photo-album": "^3.0.2",
     "swiper": "^10.3.1",
-    "vercel": "^35.2.3"
+    "vercel": "^35.2.3",
+    "yet-another-react-lightbox": "^3.21.4"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.38",

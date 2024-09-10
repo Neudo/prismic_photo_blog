@@ -5,7 +5,8 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PostCard } from "@/components/PostCard";
-import Bounded from "@/components/Bounded";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 // This component renders your homepage.
 //
@@ -38,12 +39,13 @@ export default async function Index() {
       { field: "my.blog_post.publication_date", direction: "desc" },
       { field: "document.first_publication_date", direction: "desc" },
     ],
-      limit: 3,
+    limit: 3,
   });
 
   return (
       <>
-          <SliceZone slices={home.data.slices} components={components} />
+        <SliceZone slices={home.data.slices} components={components} />
+        <SpeedInsights />
 
         {/* Map over each of the blog posts created and display a `PostCard` for it */}
         <section className=" grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-7xl px-6 mx-auto my-[50px]">
