@@ -6,6 +6,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PostCard } from "@/components/PostCard";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 
 // This component renders your homepage.
@@ -46,6 +47,7 @@ export default async function Index() {
       <>
         <SliceZone slices={home.data.slices} components={components} />
         <SpeedInsights />
+        <Analytics />
 
         {/* Map over each of the blog posts created and display a `PostCard` for it */}
         <section className=" grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-7xl px-6 mx-auto my-[50px]">
