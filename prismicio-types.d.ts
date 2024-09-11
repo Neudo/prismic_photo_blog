@@ -366,6 +366,28 @@ type ContactDocumentDataSlicesSlice = never;
  */
 interface ContactDocumentData {
   /**
+   * Image field in *Contact*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Texte field in *Contact*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.contact_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact_text: prismic.RichTextField;
+
+  /**
    * Slice Zone field in *Contact*
    *
    * - **Field Type**: Slice Zone
