@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutDocumentDataSlicesSlice = never;
+type AboutDocumentDataSlicesSlice =
+  | ImageFullSlice
+  | TextImageSlice
+  | RichTextSlice;
 
 /**
  * Content for À propos documents

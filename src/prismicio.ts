@@ -1,27 +1,23 @@
 import * as prismic from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
-import config from "../slicemachine.config.json";
 
 /**
  * The project's Prismic repository name.
  */
-export const repositoryName = "alainbphoto"
-
+export const repositoryName = "alainbphoto";
 
 /**
  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
  */
 const routes: prismic.ClientConfig["routes"] = [
-  {type: "page", path: "/:uid"},
-  {type: "page", uid: "home", path: "/"},
-
-  {type: "blog_post", path: "/blog/:uid"},
-  {type: "blog", path: "/blog"},
-
-  {type: "contact", path: "/contact"},
-
-  {type: "gallery", path: "/gallery"},
-  {type: "categorie", path: "/gallery/:uid"},
+  { type: "page", path: "/:uid" },
+  { type: "page", uid: "home", path: "/" },
+  { type: "blog_post", path: "/blog/:uid" },
+  { type: "blog", path: "/blog" },
+  { type: "contact", path: "/contact" },
+  { type: "about", path: "/about" },
+  { type: "gallery", path: "/gallery" },
+  { type: "categorie", path: "/gallery/:uid" },
 ];
 
 /**
