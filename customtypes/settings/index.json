@@ -89,6 +89,13 @@
           "allowTargetBlank": true,
           "select": null
         }
+      },
+      "mail": {
+        "type": "Text",
+        "config": {
+          "label": "E-mail",
+          "placeholder": ""
+        }
       }
     }
   }

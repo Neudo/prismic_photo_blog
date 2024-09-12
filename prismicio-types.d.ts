@@ -786,6 +786,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   youtube: prismic.LinkField;
+
+  /**
+   * E-mail field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.mail
+   * - **Tab**: Réseaux sociaux
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  mail: prismic.KeyTextField;
 }
 
 /**
