@@ -12,10 +12,10 @@ export const richTextComponents: JSXMapSerializer = {
     }
   },
   heading1: ({ children }) => (
-    <h1 className="text-5xl font-bold lg:text-8xl">{children}</h1>
+    <h1 className="text-3xl font-bold lg:text-6xl">{children}</h1>
   ),
   heading2: ({ children }) => (
-    <h2 className="text-3xl font-bold lg:text-6xl">{children}</h2>
+    <h2 className="text-3xl font-bold lg:text-5xl">{children}</h2>
   ),
   heading3: ({ children }) => (
     <h3 className="mb-3 text-2xl font-bold lg:mb-6 lg:text-4xl">{children}</h3>

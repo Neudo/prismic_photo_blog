@@ -1,12 +1,11 @@
 import type { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import {
+  JSXMapSerializer,
   PrismicRichText,
   SliceComponentProps,
-  JSXMapSerializer,
 } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
-
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -30,8 +29,11 @@ type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
 const RichText = ({ slice }: RichTextProps): JSX.Element => {
   return (
     <Bounded>
-      <div className="prose prose-invert prose-lg prose-slate">
-      <PrismicRichText field={slice.primary.content} components={components} />
+      <div className="prose prose-lg prose-slate">
+        <PrismicRichText
+          field={slice.primary.content}
+          components={components}
+        />
       </div>
     </Bounded>
   );

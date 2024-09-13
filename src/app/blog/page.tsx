@@ -6,7 +6,7 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import {PostCard} from "@/components/PostCard";
+import { PostCard } from "@/components/PostCard";
 
 type Params = { uid: string };
 
@@ -20,8 +20,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  const page = await client
-      .getSingle("blog")
+  const page = await client.getSingle("blog");
 
   return {
     title: prismic.asText(page.data.title),
@@ -37,12 +36,9 @@ export async function generateMetadata({
   };
 }
 
-
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-  const page = await client
-        .getSingle("blog")
-        .catch(() => notFound());
+  const page = await client.getSingle("blog").catch(() => notFound());
 
   // Get all of the blog_post documents created on Prismic ordered by publication date
   const posts = await client.getAllByType("blog_post", {
@@ -52,15 +48,18 @@ export default async function Page({ params }: { params: Params }) {
     ],
   });
 
-  return <div><SliceZone slices={page.data.slices} components={components}/>
-    {/* Map over each of the blog posts created and display a `PostCard` for it */}
-    <h1 className="container mx-auto max-w-screen-xl pt-16">Blog</h1>
-    <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-16 container mx-auto max-w-screen-xl">
-      {posts.map((post) => (
-          <PostCard key={post.id} post={post}/>
-      ))}
-    </section>
-  </div>
+  return (
+    <div>
+      <SliceZone slices={page.data.slices} components={components} />
+      {/* Map over each of the blog posts created and display a `PostCard` for it */}
+      <h1 className="container mx-auto max-w-screen-xl pt-16">Blog</h1>
+      <section className="container mx-auto grid max-w-screen-xl grid-cols-1 gap-6 px-4 py-16 sm:grid-cols-2 md:grid-cols-3 lg:px-0">
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </section>
+    </div>
+  );
 }
 
 export async function generateStaticParams() {

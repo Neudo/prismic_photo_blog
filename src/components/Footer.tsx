@@ -1,38 +1,36 @@
-import React from 'react';
-import {createClient} from "@/prismicio";
-import {PrismicNextLink} from "@prismicio/next";
-import {headers} from 'next/headers';
+import React from "react";
+import { createClient } from "@/prismicio";
+import { PrismicNextLink } from "@prismicio/next";
+import { headers } from "next/headers";
 
-export default async function Footer(){
-    const client = createClient();
-    const settings = await client.getSingle("settings");
+export default async function Footer() {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
 
-    const headersList = headers();
-    const referer = headersList.get('referer');
+  const headersList = headers();
+  const referer = headersList.get("referer");
 
+  return (
+    <footer
+      className={`flex ${referer && referer.includes("gallery") ? "hidden" : ""} mt-10 flex-col items-center justify-between border-t border-slate-600 p-5 md:flex-row`}
+    >
+      {/*<Logo />*/}
 
-
-
-
-    return (
-        <footer className={`flex ${referer && referer.includes('gallery') ? 'hidden' : '' } flex-col md:flex-row mt-10 items-center justify-between p-5 border-t border-slate-600`}  >
-                {/*<Logo />*/}
-
-            <span className="sr-only" >Alainbphoto.fr Home page</span>
-            <nav>
-                <ul className="gap-6 flex">
-                    {settings.data.navigation.map((item) => (
-                        <li key={item.label}>
-                            <PrismicNextLink
-                                field={item.link}
-                                className="min-h-11 item-center"
-                            >
-                                {item.label} </PrismicNextLink>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </footer>
-    );
-};
-
+      <span className="sr-only">Alainbphoto.fr Home page</span>
+      <nav>
+        <ul className="flex flex-wrap gap-6">
+          {settings.data.navigation.map((item) => (
+            <li key={item.label}>
+              <PrismicNextLink
+                field={item.link}
+                className="item-center min-h-11"
+              >
+                {item.label}{" "}
+              </PrismicNextLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </footer>
+  );
+}

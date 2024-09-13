@@ -1,68 +1,82 @@
-'use client'
-import React, {useEffect, useState} from 'react';
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import { Content } from "@prismicio/client";
-import {SliceComponentProps} from "@prismicio/react";
-import {RichText} from "@/components/RichText";
-import {useRef} from "react";
-import {useScroll, useTransform, motion} from "framer-motion";
-import {breakPointsChecker} from "@/utils/breakPointsChecker";
+import { SliceComponentProps } from "@prismicio/react";
+import { RichText } from "@/components/RichText";
+import { motion } from "framer-motion";
+import { breakPointsChecker } from "@/utils/breakPointsChecker";
 
 export type StepsProps = SliceComponentProps<Content.StepsSlice>;
 interface CardProps {
-    key: number;
-    item: any;
+  key: number;
+  item: any;
 }
 
 interface CardsProps {
-    data: StepsProps['slice'];
+  data: StepsProps["slice"];
 }
 
+const Card = ({ key, item }: CardProps) => {
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(breakPointsChecker(window.innerWidth).isMobile);
+    };
 
-const Card = ({key, item}: CardProps) => {
-    const [isMobile, setIsMobile] = useState(false)
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-    useEffect(() => {
-         setIsMobile(breakPointsChecker(window.innerWidth).isMobile)
-    }, [])
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
+  const cardRef = useRef(null);
 
+  return (
+    <motion.li
+      ref={cardRef}
+      key={key}
+      className="mb-[80px] rounded border-black bg-slate-200 px-4 py-6 text-black md:px-14 md:py-10"
+      initial={{
+        opacity: 0,
+        translateY: "150px",
+      }}
+      whileInView={{
+        opacity: 1,
+        translateY: 0,
+        transition: {
+          duration: 0.3,
+          ease: "easeInOut",
+        },
+      }}
+      viewport={{
+        margin: "10%",
+        once: true,
+      }}
+    >
+      <RichText field={item.steps} />
+    </motion.li>
+  );
+};
 
-    const cardRef = useRef(null)
-    const {scrollYProgress} = useScroll({
-        target: cardRef,
-        offset: ['200% end', 'end end'],
-    })
-    const translate = useTransform(scrollYProgress, [0, 1], ['0vw', '60vw']);
+const Cards = ({ data }: CardsProps): JSX.Element => {
+  return (
+    <div className="flex h-full flex-col items-start justify-between gap-2 md:flex-row md:gap-4">
+      <div className="bottom-[30%] pb-[17%] md:sticky md:top-[50%] md:w-[50%]">
+        <RichText field={data.primary.titre} />
+      </div>
 
-    return (
-        <motion.li ref={cardRef} style={!isMobile ? {translateX: translate} : {translateY: translate}} key={key}
-                   className="mb-[80px] rounded bg-slate-200 px-4 py-6 md:px-14 md:py-10 border-black text-black">
-            <RichText field={item.steps}/>
-        </motion.li>
-    )
-}
-
-const Cards = ({data}: CardsProps): JSX.Element => {
-
-
-    return (
-        <div className="flex items-start justify-between flex-col gap-2 md:flex-row md:gap-4 h-full">
-            <div className="md:w-[50%] md:sticky md:top-[50%] bottom-[30%] pb-[17%]">
-                <RichText field={data.primary.titre}/>
-            </div>
-
-            <div className="md:w-[50%] relative ">
-                {/*<div className="md:w-[50%] relative top-[70vh]">*/}
-
-                <ul  className="">
-                    {data.items.map((item, index) => (
-                        <Card key={index}  item={item} />
-                    ))}
-                </ul>
-            </div>
-        </div>
-    );
-}
+      <div className="relative md:w-[50%] ">
+        <ul>
+          {data.items.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export default Cards;
