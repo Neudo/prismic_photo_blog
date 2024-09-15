@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import {
   Environment,
+  Html,
   MeshDistortMaterial,
   Scroll,
   ScrollControls,
@@ -77,16 +78,19 @@ function Flag({ item, flagIndex }: FlagProps) {
   });
 
   return (
-    <mesh
-      position={[flagIndex * 8, 0, 0]} // Ajuste la position avec la largeur du viewport
-      onPointerOver={() => hover(true)}
-      onPointerOut={() => hover(false)}
-      scale={[2, 4, 1]}
-      onClick={() => goToSingle(item.url)}
-    >
-      <planeGeometry args={[3, 1, 32, 32]} />
-      <MeshDistortMaterial ref={distortRef} speed={0.6} map={texture} />
-    </mesh>
+    <>
+      <mesh
+        position={[flagIndex * 8, 0, 0]}
+        onPointerOver={() => hover(true)}
+        onPointerOut={() => hover(false)}
+        scale={[2, 4, 1]}
+        onClick={() => goToSingle(item.url)}
+      >
+        <planeGeometry args={[3, 1, 32, 32]} />
+        <MeshDistortMaterial ref={distortRef} speed={0.6} map={texture} />
+        <Html>{item.data.name}</Html>
+      </mesh>
+    </>
   );
 }
 
@@ -113,18 +117,7 @@ function SwiperGallery({ data }: any) {
             <Flag key={index} item={item} flagIndex={index} />
           ))}
         </Scroll>
-        <Scroll html>
-          {data.map((item: Category, index: number) => (
-            <div key={index} className="h-screen w-screen">
-              <h1
-                style={{ left: 45 * (index + 1) + "vw" }}
-                className="top-[60vh] text-6xl text-slate-300"
-              >
-                {item.data.name}
-              </h1>
-            </div>
-          ))}
-        </Scroll>
+        <Scroll html></Scroll>
       </ScrollControls>
     </Canvas>
   );
