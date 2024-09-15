@@ -89,7 +89,7 @@ function Flag({ item, flagIndex }: FlagProps) {
       >
         <planeGeometry args={[3, 1, 32, 32]} />
         <MeshDistortMaterial ref={distortRef} speed={0.6} map={texture} />
-        <Text position={[0, 2.5, 0]} {...fontProps}>
+        <Text position={[0, -0.6, 0]} {...fontProps}>
           {item.data.name}
         </Text>
       </mesh>
