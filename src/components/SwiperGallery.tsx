@@ -4,10 +4,10 @@ import * as THREE from "three";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import {
   Environment,
-  Html,
   MeshDistortMaterial,
   Scroll,
   ScrollControls,
+  Text,
   useCursor,
 } from "@react-three/drei";
 
@@ -68,6 +68,7 @@ function Flag({ item, flagIndex }: FlagProps) {
       window.location.href = url;
     }, 300);
   };
+  const fontProps = { fontSize: 0.23 };
 
   useFrame((state, delta) => {
     distortRef.current.distort = THREE.MathUtils.lerp(
@@ -88,7 +89,9 @@ function Flag({ item, flagIndex }: FlagProps) {
       >
         <planeGeometry args={[3, 1, 32, 32]} />
         <MeshDistortMaterial ref={distortRef} speed={0.6} map={texture} />
-        <Html>{item.data.name}</Html>
+        <Text position={[0, 2.5, 0]} {...fontProps}>
+          {item.data.name}
+        </Text>
       </mesh>
     </>
   );
