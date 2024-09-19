@@ -23,12 +23,16 @@ export const PostCard = ({
         <div className="flex w-full flex-col gap-1">
           <time
             dateTime={dateConverter(
-              data?.publication_date ? data.publication_date.toString() : "",
+              data?.publication_date
+                ? data.publication_date.toString()
+                : new Date().toString(),
             )}
             className="ease w-full border-b-2 pb-1 text-sm text-slate-700 opacity-75 transition-all"
           >
             {dateConverter(
-              data?.publication_date ? data.publication_date.toString() : "",
+              data?.publication_date
+                ? data.publication_date.toString()
+                : new Date().toString(),
             )}
           </time>
           <div className="transition-all duration-300 ease-in-out hover:opacity-75">

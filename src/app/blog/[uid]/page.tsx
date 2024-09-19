@@ -77,7 +77,9 @@ export default async function Page({ params }: { params: Params }) {
           <div className="flex w-full flex-col items-center gap-3">
             <div className="flex flex-col items-center gap-6">
               <p className="w-min border-b-2 pb-1 opacity-75">
-                {new Date(publication_date || "").toLocaleDateString()}
+                {new Date(
+                  publication_date || new Date().toString(),
+                ).toLocaleDateString()}
               </p>
               <div className="px-4 text-center">
                 <RichText field={title} />
