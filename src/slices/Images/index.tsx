@@ -45,7 +45,7 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
           <li
             key={index}
             onClick={() => setIndex(index)}
-            className="mx-[0] mb-4 mt-[0] cursor-pointer break-inside-avoid"
+            className="relative mx-[0] mb-4 mt-[0] cursor-pointer break-inside-avoid"
           >
             <PrismicNextImage
               field={item.image}

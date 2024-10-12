@@ -5,6 +5,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { RichText } from "@/components/RichText";
 import { motion } from "framer-motion";
 import { breakPointsChecker } from "@/utils/breakPointsChecker";
+import { PrismicNextLink } from "@prismicio/next";
 
 export type StepsProps = SliceComponentProps<Content.StepsSlice>;
 interface CardProps {
@@ -18,6 +19,7 @@ interface CardsProps {
 
 const Card = ({ key, item }: CardProps) => {
   const [isMobile, setIsMobile] = useState(false);
+  console.log("item cta ->", item.cta);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,6 +59,14 @@ const Card = ({ key, item }: CardProps) => {
       }}
     >
       <RichText field={item.steps} />
+      {item.cta.slug && (
+        <PrismicNextLink
+          field={item.cta}
+          className="bg-primary-green mt-4 inline-flex min-h-11 items-center rounded-xl px-4 py-2 text-white"
+        >
+          {item.cta.slug}
+        </PrismicNextLink>
+      )}
     </motion.li>
   );
 };

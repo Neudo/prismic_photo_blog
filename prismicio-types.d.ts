@@ -1336,6 +1336,16 @@ export interface StepsSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   steps: prismic.RichTextField;
+
+  /**
+   * Boutton field in *Steps → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: steps.items[].cta
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta: prismic.LinkField;
 }
 
 /**

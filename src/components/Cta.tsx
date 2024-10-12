@@ -1,23 +1,20 @@
-import React from 'react';
-import TransitionLink from "@/components/TransitionLink";
+import React from "react";
 
 export interface CtaProps {
-    data: {
-        title: string;
-        url: string;
-    }
+  data: {
+    title: string;
+    url: string;
+  };
 }
 
-function Cta({data}: CtaProps) {
-    return (
-        <div className="flex flex-col items-center gap-3 w-full">
-            <div className="flex flex-col gap-6 items-center">
-                <p className="opacity-75 border-b-2 w-min pb-1">
-                    {/*{data.title}*/}
-                </p>
-            </div>
-        </div>)
-        {/*// <TransitionLink data={title: title, link: {url: url, id: url}}  />*/}
+function Cta({ data }: CtaProps) {
+  return (
+    <div className="flex w-full flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-6">
+        <p className="w-min border-b-2 pb-1 opacity-75">{/*{data.title}*/}</p>
+      </div>
+    </div>
+  );
 }
 
 export default Cta;

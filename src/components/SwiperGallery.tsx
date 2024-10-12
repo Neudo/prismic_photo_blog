@@ -68,7 +68,7 @@ function Flag({ item, flagIndex }: FlagProps) {
       window.location.href = url;
     }, 300);
   };
-  const fontProps = { fontSize: 0.23 };
+  const fontProps = { fontSize: 0.15 };
 
   useFrame((state, delta) => {
     distortRef.current.distort = THREE.MathUtils.lerp(
@@ -102,27 +102,50 @@ function SwiperGallery({ data }: any) {
     (category: Category) => category.data.highlight_image.url,
   );
 
+  function slideTo(index: number) {
+    return () => {
+      setTimeout(() => {
+        window.location.href = data[index].url;
+      }, 300);
+    };
+  }
+
   return (
-    <Canvas>
-      <Environment preset="forest" />
-      <ambientLight intensity={2.3} />
-      <ScrollControls
-        pages={imagesUrl.length}
-        damping={0.15}
-        horizontal={true}
-        distance={1}
-      >
-        {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
-        <Background />
-        <Scroll>
-          {/* Canvas contents in here will scroll along */}
+    <>
+      <Canvas>
+        <Environment preset="forest" />
+        <ambientLight intensity={2.3} />
+        <ScrollControls
+          pages={imagesUrl.length}
+          damping={0.15}
+          horizontal={true}
+          distance={1}
+        >
+          {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
+          <Background />
+          <Scroll>
+            {/* Canvas contents in here will scroll along */}
+            {data.map((item: Category, index: number) => (
+              <Flag key={index} item={item} flagIndex={index} />
+            ))}
+          </Scroll>
+          <Scroll html></Scroll>
+        </ScrollControls>
+      </Canvas>
+      <div className="absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center">
+        <div className="flex gap-2 text-white">
           {data.map((item: Category, index: number) => (
-            <Flag key={index} item={item} flagIndex={index} />
+            <p
+              key={index}
+              onClick={slideTo(index)}
+              className="cursor-pointer p-4"
+            >
+              {item.data.name}
+            </p>
           ))}
-        </Scroll>
-        <Scroll html></Scroll>
-      </ScrollControls>
-    </Canvas>
+        </div>
+      </div>
+    </>
   );
 }
 
