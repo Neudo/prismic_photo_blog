@@ -46,6 +46,15 @@
             "placeholder_true": "Droite",
             "default_value": false
           }
+        },
+        "with_bg": {
+          "type": "Boolean",
+          "config": {
+            "label": "Avec un fond de couleur ?",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
         }
       },
       "items": {}

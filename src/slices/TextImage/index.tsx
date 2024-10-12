@@ -14,10 +14,12 @@ export type TextImageProps = SliceComponentProps<Content.TextImageSlice>;
  * Component for "TextImage" Slices.
  */
 const TextImage = ({ slice }: TextImageProps): JSX.Element => {
+  console.log(slice.primary.with_bg);
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={slice.primary.with_bg ? "bg-primary-green text-white" : ""}
     >
       <div
         className={`flex flex-wrap items-center justify-between ${slice.primary.position ? "" : "flex-row-reverse"}`}

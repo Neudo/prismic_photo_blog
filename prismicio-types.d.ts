@@ -1419,6 +1419,17 @@ export interface TextImageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   position: prismic.BooleanField;
+
+  /**
+   * Avec un fond de couleur ? field in *TextImage → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: text_image.primary.with_bg
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  with_bg: prismic.BooleanField;
 }
 
 /**
