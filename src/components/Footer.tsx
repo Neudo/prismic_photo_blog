@@ -29,6 +29,9 @@ export default async function Footer() {
               </PrismicNextLink>
             </li>
           ))}
+          <li>
+            <a href="/mentions-legales">Mentions légales</a>
+          </li>
         </ul>
       </nav>
     </footer>

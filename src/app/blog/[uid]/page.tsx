@@ -60,7 +60,7 @@ export default async function Page({ params }: { params: Params }) {
       { field: "my.blog_post.publication_date", direction: "desc" },
       { field: "document.first_publication_date", direction: "desc" },
     ],
-    limit: 2,
+    limit: 3,
   });
 
   // Destructure out the content of the current page
@@ -101,7 +101,7 @@ export default async function Page({ params }: { params: Params }) {
 
         {/* Display the Recommended Posts section using the posts we requested earlier */}
         <h2 className="px-4 text-3xl font-bold">Autres articles</h2>
-        <section className="grid w-full max-w-7xl grid-cols-1 gap-8">
+        <section className="grid w-full max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
