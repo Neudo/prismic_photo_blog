@@ -19,7 +19,6 @@ interface CardsProps {
 
 const Card = ({ key, item }: CardProps) => {
   const [isMobile, setIsMobile] = useState(false);
-  console.log("item cta ->", item.cta);
 
   useEffect(() => {
     const handleResize = () => {

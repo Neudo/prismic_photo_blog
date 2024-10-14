@@ -133,7 +133,7 @@ function SwiperGallery({ data }: any) {
         </ScrollControls>
       </Canvas>
       <div className="absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center">
-        <div className="flex gap-2 text-white">
+        <div className="flex flex-wrap gap-2 text-white">
           {data.map((item: Category, index: number) => (
             <p
               key={index}
