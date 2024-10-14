@@ -22,6 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
       title: home.data.meta_title ?? undefined,
       images: [{ url: home.data.meta_image.url ?? "" }],
     },
+    verification: {
+      google: "AIotypvyx9cYvuCjd_B-ueG26tAWykK61RKtDYKG3jU",
+    },
   };
 }
 
