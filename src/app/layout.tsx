@@ -9,7 +9,6 @@ import React, { Suspense } from "react";
 import { NavProvider } from "@/context/NavContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
 
 const dmSans = Inter({
   subsets: ["latin"],
@@ -24,12 +23,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr-FR" className={`${dmSans.variable} `}>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="AIotypvyx9cYvuCjd_B-ueG26tAWykK61RKtDYKG3jU"
-        />
-      </Head>
       <body>
         <SpeedInsights />
         <Analytics />

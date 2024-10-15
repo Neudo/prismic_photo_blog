@@ -5,7 +5,6 @@ import {
   PrismicText,
   SliceComponentProps,
 } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
 import "swiper/css";
 import React from "react";
 import { createClient } from "@/prismicio";
@@ -53,9 +52,10 @@ const Hero = async ({ slice }: HeroProps): Promise<JSX.Element> => {
         </ul>
       </nav>
       <div className="absolute inset-0 z-10 rounded-3xl bg-[#000000] filter">
-        <PrismicNextImage
-          className=" h-full rounded-3xl border-[15px] border-white object-cover"
-          field={slice.primary.hero_image}
+        <img
+          src={slice.primary.hero_image.url || ""}
+          alt="hero"
+          className="h-full rounded-3xl border-[15px] border-white object-cover"
         />
       </div>
     </div>
