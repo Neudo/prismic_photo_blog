@@ -9,6 +9,7 @@ import React, { Suspense } from "react";
 import { NavProvider } from "@/context/NavContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 const dmSans = Inter({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({
       <body>
         <SpeedInsights />
         <Analytics />
-
+        <GoogleAnalytics trackPageViews />
         <Suspense>
           <SmoothScroller />
         </Suspense>

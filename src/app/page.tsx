@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [{ url: home.data.meta_image.url ?? "" }],
     },
     verification: {
-      google: "fzV6-BBjKAq43BoDddsfle04sFsFDiW7LPVmGHSs7zs",
+      google: process.env.NEXT_PUBLIC_GOOGLE_SC,
     },
   };
 }
