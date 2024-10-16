@@ -23,11 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [{ url: home.data.meta_image.url ?? "" }],
     },
     verification: {
-      google: "AIotypvyx9cYvuCjd_B-ueG26tAWykK61RKtDYKG3jU",
+      google: "fzV6-BBjKAq43BoDddsfle04sFsFDiW7LPVmGHSs7zs",
     },
   };
 }
-
 export default async function Index() {
   // The client queries content from the Prismic API
   const client = createClient();

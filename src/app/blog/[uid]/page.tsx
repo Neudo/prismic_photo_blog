@@ -9,7 +9,6 @@ import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
 import { PostCard } from "@/components/PostCard";
 import { RichText } from "@/components/RichText";
-import { Navigation } from "@/components/Navigation";
 
 type Params = { uid: string };
 
@@ -70,13 +69,12 @@ export default async function Page({ params }: { params: Params }) {
   return (
     <div>
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
-        <Navigation client={client} />
-
         {/* Display the "hero" section of the blog post */}
         <section className="flex flex-col gap-12">
           <div className="flex w-full flex-col items-center gap-3">
-            <div className="flex flex-col items-center gap-6">
-              <p className="w-min border-b-2 pb-1 opacity-75">
+            <div className="mt-4 flex flex-col items-center gap-6">
+              <p className="border-b-2 pb-1 opacity-75">
+                Publié le{" "}
                 {new Date(
                   publication_date || new Date().toString(),
                 ).toLocaleDateString()}
