@@ -53,7 +53,7 @@ export default function RootLayout({
       <PrismicPreview repositoryName={repositoryName} />
       <Script
         strategy="afterInteractive"
-        src="https://tarteaucitron.io/load.js?domain=www.alainb-photo.fr&uuid=98b3877369f196b37e4ad7146213dabda931802d"
+        src="https://tarteaucitron.io/load.js?domain=alainbphoto.fr&uuid=98b3877369f196b37e4ad7146213dabda931802d"
       />
     </html>
   );
