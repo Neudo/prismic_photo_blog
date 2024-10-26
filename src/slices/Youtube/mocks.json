@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"youtube_url": {
+				"__TYPE__": "FieldContent",
+				"value": "enjoy",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

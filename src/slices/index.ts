@@ -14,4 +14,5 @@ export const components = {
   steps: dynamic(() => import("./Steps")),
   text_image: dynamic(() => import("./TextImage")),
   works: dynamic(() => import("./Works")),
+  youtube: dynamic(() => import("./Youtube")),
 };

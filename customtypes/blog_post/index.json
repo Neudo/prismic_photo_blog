@@ -50,6 +50,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "youtube": {
+              "type": "SharedSlice"
+            },
             "image_full": {
               "type": "SharedSlice"
             },

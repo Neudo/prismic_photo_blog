@@ -151,7 +151,10 @@ interface BlogDocumentData {
 export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
-type BlogPostDocumentDataSlicesSlice = ImageFullSlice | RichTextSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | YoutubeSlice
+  | ImageFullSlice
+  | RichTextSlice;
 
 /**
  * Content for Article de blog documents
@@ -522,6 +525,7 @@ export type GalleryDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | YoutubeSlice
   | WorksSlice
   | ItemSlice
   | StepsSlice
@@ -1557,6 +1561,51 @@ type WorksSliceVariation = WorksSliceDefault | WorksSliceWorksBottom;
  */
 export type WorksSlice = prismic.SharedSlice<"works", WorksSliceVariation>;
 
+/**
+ * Primary content in *Youtube → Primary*
+ */
+export interface YoutubeSliceDefaultPrimary {
+  /**
+   * URL Youtube field in *Youtube → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: youtube.primary.youtube_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  youtube_url: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Youtube Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YoutubeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<YoutubeSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Youtube*
+ */
+type YoutubeSliceVariation = YoutubeSliceDefault;
+
+/**
+ * Youtube Shared Slice
+ *
+ * - **API ID**: `youtube`
+ * - **Description**: Youtube
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YoutubeSlice = prismic.SharedSlice<
+  "youtube",
+  YoutubeSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1644,6 +1693,10 @@ declare module "@prismicio/client" {
       WorksSliceVariation,
       WorksSliceDefault,
       WorksSliceWorksBottom,
+      YoutubeSlice,
+      YoutubeSliceDefaultPrimary,
+      YoutubeSliceVariation,
+      YoutubeSliceDefault,
     };
   }
 }

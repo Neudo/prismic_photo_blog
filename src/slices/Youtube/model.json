@@ -1,0 +1,26 @@
+{
+  "id": "youtube",
+  "type": "SharedSlice",
+  "name": "Youtube",
+  "description": "Youtube",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "youtube_url": {
+          "type": "Text",
+          "config": {
+            "label": "URL Youtube",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
