@@ -10,8 +10,8 @@ import { NavProvider } from "@/context/NavContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalyticsClient from "@/components/GoogleAnalytics";
-import Script from "next/script";
 import Seo from "@/components/Seo";
+import Script from "next/script";
 
 const dmSans = Inter({
   subsets: ["latin"],
@@ -51,12 +51,12 @@ export default function RootLayout({
           </main>
           <Footer />
         </NavProvider>
+        <Script
+          src={`https://cdn-cookieyes.com/client_data/ce8f661d88703bd8cbeb7d53/script.js`}
+          strategy="afterInteractive"
+        ></Script>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
-      <Script
-        strategy="afterInteractive"
-        src="https://tarteaucitron.io/load.js?domain=alainbphoto.fr&uuid=98b3877369f196b37e4ad7146213dabda931802d"
-      />
     </html>
   );
 }
