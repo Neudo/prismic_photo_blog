@@ -68,7 +68,7 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <div>
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4">
         {/* Display the "hero" section of the blog post */}
         <section className="flex flex-col gap-12">
           <div className="flex w-full flex-col items-center gap-3">
@@ -79,18 +79,18 @@ export default async function Page({ params }: { params: Params }) {
                   publication_date || new Date().toString(),
                 ).toLocaleDateString()}
               </p>
-              <div className="px-4 text-center">
+              <div className="text-center">
                 <RichText field={title} />
               </div>
             </div>
-            <div className="px-4 text-center">
+            <div className="text-center">
               <RichText field={description} />
             </div>
           </div>
           <PrismicNextImage
             field={featured_image}
             sizes="100vw"
-            className="max-h-96 w-full max-w-7xl rounded-xl object-cover px-4"
+            className="max-h-96 w-full max-w-7xl rounded-xl object-cover"
           />
         </section>
 
@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: Params }) {
         <SliceZone slices={slices} components={components} />
 
         {/* Display the Recommended Posts section using the posts we requested earlier */}
-        <h2 className="px-4 text-3xl font-bold">Autres articles</h2>
+        <h2 className="mb-0 px-4 text-3xl font-bold">Autres articles</h2>
         <section className="grid w-full max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
