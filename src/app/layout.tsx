@@ -52,7 +52,7 @@ export default function RootLayout({
           <Footer />
         </NavProvider>
         <Script
-          src={`https://cdn-cookieyes.com/client_data/ce8f661d88703bd8cbeb7d53/script.js`}
+          src={process.env.COOKIEYES}
           strategy="afterInteractive"
         ></Script>
       </body>
