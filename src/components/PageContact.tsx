@@ -2,9 +2,9 @@
 import React from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RichText } from "@/components/RichText";
-import { FaEnvelope } from "react-icons/fa";
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import ContactForm from "@/components/ContactForm";
 
 function PageContact({ data, settings }: any) {
   return (
@@ -34,18 +34,9 @@ function PageContact({ data, settings }: any) {
           initial={{ opacity: 0, translateY: "50px" }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.3, delay: 0.55 }}
-        >
-          {settings.data.mail && (
-            <a
-              href={`mailto:${settings.data.mail}`}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 text-2xl hover:underline"
-            >
-              <FaEnvelope className="mr-3 text-6xl" /> Envoyez moi un mail
-            </a>
-          )}
-        </motion.div>
+        ></motion.div>
+
+        <ContactForm />
 
         {/*Socials links*/}
         <motion.div

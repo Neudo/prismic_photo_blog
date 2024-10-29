@@ -199,3 +199,8 @@ canvas {
     left: 14px;
     border-radius: 10px;
 }
+@layer base {
+  :root {
+        --radius: 0.5rem;
+    }
+}
