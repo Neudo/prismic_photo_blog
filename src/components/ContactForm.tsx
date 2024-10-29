@@ -3,6 +3,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { ToastAction } from "@/components/ui/toast";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -17,12 +20,23 @@ import { Textarea } from "@/components/ui/textarea";
 import emailjs from "@emailjs/browser";
 
 const formSchema = z.object({
-  from_name: z.string().min(2).max(50),
-  reply_to: z.string().email(),
-  message: z.string().min(2).max(500),
+  from_name: z
+    .string()
+    .min(2, { message: "Le nom doit contenir au moins 2 caractères." })
+    .max(50, { message: "Le nom ne peut pas dépasser 50 caractères." }),
+
+  reply_to: z
+    .string()
+    .email({ message: "Veuillez entrer une adresse e-mail valide." }),
+
+  message: z
+    .string()
+    .min(2, { message: "Le message doit contenir au moins 2 caractères." })
+    .max(500, { message: "Le message ne peut pas dépasser 500 caractères." }),
 });
 
 export default function ContactForm() {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,6 +66,16 @@ export default function ContactForm() {
       .then(
         () => {
           form.reset(); //clear the fields after submission
+          toast({
+            title: "Message envoyé avec succès",
+            description:
+              "Merci de votre message, j'y répondrai dans les meilleurs délais.",
+            action: (
+              <ToastAction altText="Goto schedule to undo">
+                Compris !
+              </ToastAction>
+            ),
+          });
         },
         (error) => {
           console.warn("FAILED...", JSON.stringify(error));
@@ -108,6 +132,7 @@ export default function ContactForm() {
           )}
         />
         <Button type="submit">Envoyer</Button>
+        <Toaster />
       </form>
     </Form>
   );
