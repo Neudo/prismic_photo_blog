@@ -18,8 +18,8 @@ import { Textarea } from "@/components/ui/textarea";
 import emailjs from "@emailjs/browser";
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  email: z.string().email(),
+  from_name: z.string().min(2).max(50),
+  reply_to: z.string().email(),
   message: z.string().min(2).max(500),
 });
 
@@ -30,8 +30,8 @@ export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
+      from_name: "",
+      reply_to: "",
       message: "",
     },
   });
@@ -69,7 +69,7 @@ export default function ContactForm() {
       >
         <FormField
           control={form.control}
-          name="name"
+          name="from_name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nom</FormLabel>
@@ -83,7 +83,7 @@ export default function ContactForm() {
         />
         <FormField
           control={form.control}
-          name="email"
+          name="reply_to"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
