@@ -1,7 +1,7 @@
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import "./global.css";
-import { Inter } from "next/font/google";
+
 import Header from "@/components/Header/index";
 import Footer from "@/components/Footer";
 import SmoothScroller from "@/components/Lenis";
@@ -12,12 +12,7 @@ import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalyticsClient from "@/components/GoogleAnalytics";
 import Seo from "@/components/Seo";
 import Script from "next/script";
-
-const dmSans = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
-});
+import { dmSans } from "@/app/ui/fonts";
 
 export default function RootLayout({
   children,

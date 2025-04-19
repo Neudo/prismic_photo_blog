@@ -11,9 +11,7 @@ export default async function Footer() {
   const pathname = headerList.get("x-current-path");
 
   return (
-    <footer
-      className={`flex ${pathname && pathname.includes("gallery") ? "hidden" : ""} mt-10 flex-col items-center justify-between border-t border-slate-600 p-5 md:flex-row`}
-    >
+    <footer className="flex flex-col items-center justify-between border-t border-slate-600 p-5 md:flex-row">
       {/*<Logo />*/}
 
       <span className="sr-only">Alainbphoto.fr Home page</span>

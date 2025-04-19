@@ -2,9 +2,9 @@
 import React from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RichText } from "@/components/RichText";
-import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import ContactForm from "@/components/ContactForm";
+import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
 
 function PageContact({ data, settings }: any) {
   return (
@@ -35,12 +35,9 @@ function PageContact({ data, settings }: any) {
           animate={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.3, delay: 0.55 }}
         ></motion.div>
-
-        <ContactForm />
-
         {/*Socials links*/}
         <motion.div
-          className="mt-10 flex gap-4"
+          className="mb-10 flex gap-4"
           initial={{ opacity: 0, translateY: "50px" }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.3, delay: 0.8 }}
@@ -66,6 +63,7 @@ function PageContact({ data, settings }: any) {
             </PrismicNextLink>
           )}
         </motion.div>
+        <ContactForm />
       </div>
     </div>
   );

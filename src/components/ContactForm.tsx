@@ -85,7 +85,10 @@ export default function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 rounded-lg bg-stone-50 p-6 shadow-inner"
+      >
         <FormField
           control={form.control}
           name="from_name"
@@ -93,7 +96,7 @@ export default function ContactForm() {
             <FormItem>
               <FormLabel>Nom</FormLabel>
               <FormControl>
-                <Input placeholder="Doe" {...field} />
+                <Input placeholder="" {...field} />
               </FormControl>
               <FormDescription>Votre nom.</FormDescription>
               <FormMessage />
@@ -107,7 +110,7 @@ export default function ContactForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="JhonDoe@gmail.com" {...field} />
+                <Input placeholder="" {...field} />
               </FormControl>
               <FormDescription>Votre email.</FormDescription>
               <FormMessage />
@@ -121,11 +124,7 @@ export default function ContactForm() {
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
-                <Textarea
-                  placeholder="Votre message ici"
-                  className="resize-none"
-                  {...field}
-                />
+                <Textarea placeholder="Votre message ici" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

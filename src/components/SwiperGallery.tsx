@@ -1,18 +1,15 @@
 "use client";
-import React, { useRef, useState } from "react";
-import * as THREE from "three";
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import {
-  Environment,
-  MeshDistortMaterial,
-  Scroll,
-  ScrollControls,
-  Text,
-  useCursor,
-} from "@react-three/drei";
-
-// Import SwiperGallery styles
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import SwiperCore from "swiper";
+import Image from "next/image";
+// Import Swiper styles
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Link from "next/link";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 interface Category {
   id: string;
@@ -28,124 +25,63 @@ interface Category {
   };
 }
 
-interface FlagProps {
-  item: Category;
-  flagIndex: number;
-}
-
-function MiniMap() {
-  return (
-    <mesh position={[0, -3, 0]}>
-      <planeGeometry args={[3, 0.7, 32, 32]} />
-      <meshBasicMaterial color="black" />
-    </mesh>
-  );
-}
-
-function Background() {
-  return (
-    <mesh position={[0, 0, 0]}>
-      <planeGeometry args={[3, 1, 32, 32]} />
-      <meshBasicMaterial color="white" />
-    </mesh>
-  );
-}
-
-function Flag({ item, flagIndex }: FlagProps) {
-  const { width } = useThree((state) => state.viewport);
-  const distortRef = useRef<any>(null);
-  const [hovered, hover] = useState(false);
-
-  useCursor(hovered);
-
-  const textures = useLoader(
-    THREE.TextureLoader,
-    item.data.highlight_image.url,
-  );
-  const texture = Array.isArray(textures) ? textures[0] : textures;
-  const goToSingle = (url: string) => {
-    setTimeout(() => {
-      window.location.href = url;
-    }, 300);
-  };
-  const fontProps = { fontSize: 0.15 };
-
-  useFrame((state, delta) => {
-    distortRef.current.distort = THREE.MathUtils.lerp(
-      distortRef.current.distort,
-      hovered ? 0.25 : 0,
-      hovered ? 0.05 : 0.2,
-    );
-  });
-
-  return (
-    <>
-      <mesh
-        position={[flagIndex * 8, 0, 0]}
-        onPointerOver={() => hover(true)}
-        onPointerOut={() => hover(false)}
-        scale={[2, 4, 1]}
-        onClick={() => goToSingle(item.url)}
-      >
-        <planeGeometry args={[3, 1, 32, 32]} />
-        <MeshDistortMaterial ref={distortRef} speed={0.6} map={texture} />
-        <Text position={[0, -0.6, 0]} {...fontProps}>
-          {item.data.name}
-        </Text>
-      </mesh>
-    </>
-  );
-}
-
 function SwiperGallery({ data }: any) {
-  const imagesUrl = data.map(
-    (category: Category) => category.data.highlight_image.url,
-  );
+  const swiperRef = useRef<SwiperCore>();
 
   function slideTo(index: number) {
     return () => {
-      setTimeout(() => {
-        window.location.href = data[index].url;
-      }, 300);
+      if (swiperRef.current) {
+        swiperRef.current.slideTo(index);
+      }
     };
   }
 
   return (
-    <>
-      <Canvas>
-        <Environment preset="forest" />
-        <ambientLight intensity={2.3} />
-        <ScrollControls
-          pages={imagesUrl.length}
-          damping={0.15}
-          horizontal={true}
-          distance={1}
-        >
-          {/* Canvas contents in here will *not* scroll, but receive useScroll! */}
-          <Background />
-          <Scroll>
-            {/* Canvas contents in here will scroll along */}
-            {data.map((item: Category, index: number) => (
-              <Flag key={index} item={item} flagIndex={index} />
-            ))}
-          </Scroll>
-          <Scroll html></Scroll>
-        </ScrollControls>
-      </Canvas>
-      <div className="absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center">
-        <div className="flex flex-wrap gap-2 text-white">
-          {data.map((item: Category, index: number) => (
-            <p
-              key={index}
-              onClick={slideTo(index)}
-              className="cursor-pointer p-4"
-            >
-              {item.data.name}
-            </p>
-          ))}
-        </div>
+    <div className="relative mx-auto max-w-6xl">
+      <Swiper
+        modules={[Navigation]}
+        navigation={{
+          nextEl: ".custom-swiper-button-next",
+          prevEl: ".custom-swiper-button-prev",
+        }}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        className="h-[450px]"
+        slidesPerView={3.2}
+        spaceBetween={30}
+      >
+        {data.map((item: Category, index: number) => (
+          <SwiperSlide key={index}>
+            <Link href={item.url}>
+              <div
+                className="flex h-[400px] w-full cursor-pointer flex-col items-center justify-center"
+                style={{
+                  backgroundImage: `url(${item.data.highlight_image.url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+              <div className="mt-2 text-center text-lg font-semibold text-slate-100">
+                {item.data.name}
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* Custom navigation buttons */}
+      <div className="absolute left-2 top-1/2 z-10 -translate-y-1/2">
+        <button className="custom-swiper-button-prev rounded-full bg-slate-200 p-2 md:p-4 ">
+          <FaChevronLeft size={24} />
+        </button>
       </div>
-    </>
+      <div className="absolute right-2 top-1/2 z-10 -translate-y-1/2">
+        <button className="custom-swiper-button-next rounded-full bg-slate-200 p-2 md:p-4 ">
+          <FaChevronRight size={24} />
+        </button>
+      </div>
+    </div>
   );
 }
 
