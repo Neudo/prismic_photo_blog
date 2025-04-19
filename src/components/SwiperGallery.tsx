@@ -28,16 +28,8 @@ interface Category {
 function SwiperGallery({ data }: any) {
   const swiperRef = useRef<SwiperCore>();
 
-  function slideTo(index: number) {
-    return () => {
-      if (swiperRef.current) {
-        swiperRef.current.slideTo(index);
-      }
-    };
-  }
-
   return (
-    <div className="relative mx-auto max-w-6xl">
+    <div className="relative mx-auto max-w-[85vw] xl:max-w-6xl">
       <Swiper
         modules={[Navigation]}
         navigation={{
@@ -48,8 +40,16 @@ function SwiperGallery({ data }: any) {
           swiperRef.current = swiper;
         }}
         className="h-[450px]"
-        slidesPerView={3.2}
+        slidesPerView={1}
         spaceBetween={30}
+        breakpoints={{
+          640: {
+            slidesPerView: 2.2,
+          },
+          768: {
+            slidesPerView: 3.2,
+          },
+        }}
       >
         {data.map((item: Category, index: number) => (
           <SwiperSlide key={index}>
