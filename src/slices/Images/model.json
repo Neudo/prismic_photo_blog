@@ -20,6 +20,18 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "model_name": {
+          "type": "Select",
+          "config": {
+            "label": "Nom du modèle",
+            "placeholder": "",
+            "options": [
+              "Nathalie",
+              "Alexandra",
+              "Sans nom"
+            ]
+          }
         }
       }
     }

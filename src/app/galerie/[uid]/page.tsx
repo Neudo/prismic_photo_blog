@@ -7,6 +7,7 @@ import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Filter from "@/components/Filter";
 
 type Params = { uid: string };
 

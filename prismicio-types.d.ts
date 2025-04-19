@@ -1136,6 +1136,16 @@ export interface ImagesSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Nom du modèle field in *Images → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: images.items[].model_name
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  model_name: prismic.SelectField<"Nathalie" | "Alexandra" | "Sans nom">;
 }
 
 /**
