@@ -88,9 +88,9 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
       className="flex w-full flex-wrap justify-start"
     >
       {modelList.length > 0 && (
-        <div className="bg-dark sticky top-0 z-10 w-full py-4">
+        <div className="bg-dark top-0 z-10 w-full py-4 md:sticky">
           <h1 className="text-slate-200">Modèles</h1>
-          <div className="flex w-full gap-2 px-2 pb-2">
+          <div className="flex w-full flex-wrap gap-2 px-2 pb-2">
             {modelAreFiltered && (
               <button
                 onClick={() => setModelAreFiltered(false)}
