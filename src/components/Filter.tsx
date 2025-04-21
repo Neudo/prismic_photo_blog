@@ -3,12 +3,7 @@ import React from "react";
 export default function Filter({ data }: { data: any }) {
   console.log(data);
   const modelList: string[] = [];
-  //   data.items.forEach((item: any) => {
-  //     if (item.model_name && !modelList.includes(item.model_name)) {
-  //       modelList.push(item.model_name);
-  //     }
-  //   });
-  console.log(modelList);
+
   return (
     <>
       {modelList.length > 0 && (
