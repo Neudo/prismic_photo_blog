@@ -1145,7 +1145,24 @@ export interface ImagesSliceDefaultItem {
    * - **API ID Path**: images.items[].model_name
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  model_name: prismic.SelectField<"Nathalie" | "Alexandra" | "Sans nom">;
+  model_name: prismic.SelectField<
+    | "Nathalie R."
+    | "Alexandra"
+    | "Emilie H."
+    | "Cécile B."
+    | "Camille"
+    | "Audrey"
+    | "Guillaume"
+    | "Roxane"
+    | "Manon"
+    | "Claudia"
+    | "Laura"
+    | "Béa"
+    | "Maeva"
+    | "Jeremy & Maud"
+    | "Camille B."
+    | "Claire"
+  >;
 }
 
 /**

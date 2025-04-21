@@ -11,10 +11,11 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Filter from "@/components/Filter";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 /**
  * Props for `Images`.
@@ -29,6 +30,7 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
   const [index, setIndex] = useState(-1);
   const [modelAreFiltered, setModelAreFiltered] = useState<boolean>(false);
   const [model, setModel] = useState<string | null>(null);
+  const captionsRef = useRef(null);
   const modelList: string[] = [];
   slice.items.forEach((item: any) => {
     if (item.model_name && !modelList.includes(item.model_name)) {
@@ -50,6 +52,8 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
       alt: item.image?.alt || "Photo Alainb",
       width: item.image?.dimensions?.width || 0,
       height: item.image?.dimensions?.height || 0,
+      caption: item.image?.alt || "",
+      description: item.image?.alt || "",
     })),
   );
 
@@ -64,6 +68,8 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
             alt: item.image?.alt || "Photo Alainb",
             width: item.image?.dimensions?.width || 0,
             height: item.image?.dimensions?.height || 0,
+            caption: item.image?.alt || "",
+            description: item.image?.alt || "",
           }))
           .filter((slide) => slide.model_name === model),
       );
@@ -76,6 +82,8 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
           alt: item.image?.alt || "Photo Alainb",
           width: item.image?.dimensions?.width || 0,
           height: item.image?.dimensions?.height || 0,
+          caption: item.image?.alt || "",
+          description: item.image?.alt || "",
         })),
       );
     }
@@ -134,12 +142,13 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
       </ul>
 
       <Lightbox
+        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom, Captions]}
+        captions={{ ref: captionsRef }}
         index={index}
         slides={slides}
         open={index >= 0}
         slideshow={{ ref: slideshowRef }}
         close={() => setIndex(-1)}
-        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
       />
     </section>
   );
