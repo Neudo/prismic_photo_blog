@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 import SwiperGallery from "@/components/SwiperGallery";
 import Link from "next/link";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export default async function Page() {
   const client = createClient();
@@ -10,6 +11,10 @@ export default async function Page() {
 
   return (
     <div className="bg-dark min-h-[100vh]">
+      <Link className="flex items-center gap-4 bg-slate-200 p-4" href="/">
+        <ArrowLeftIcon className="h-6 w-6" />
+        Retour
+      </Link>
       <h1 className="py-16 text-center text-slate-100">Galerie photo</h1>
       <SwiperGallery data={categories} />
     </div>
