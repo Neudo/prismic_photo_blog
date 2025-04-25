@@ -101,8 +101,8 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
     >
       {modelList.length > 0 && (
         <div className="bg-dark top-0 z-10 w-full py-4 md:sticky">
-          <h1 className="text-slate-200">Modèles</h1>
-          <div className="flex w-full flex-wrap gap-2 px-2 pb-2">
+          <h2 className="mb-2 text-slate-200">Modèles</h2>
+          <div className="flex w-full flex-wrap gap-2 pb-2">
             {modelAreFiltered && (
               <button
                 onClick={() => setModelAreFiltered(false)}
@@ -123,7 +123,7 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
           </div>
         </div>
       )}
-      <ul className="relative w-full list-none gap-x-4 p-2 [columns:15rem]">
+      <ul className="relative w-full list-none gap-x-4 [columns:15rem]">
         <AnimatePresence>
           {slides.map((slide, index) => (
             <motion.li

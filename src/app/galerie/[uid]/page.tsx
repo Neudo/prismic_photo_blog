@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import Filter from "@/components/Filter";
+import { RichText } from "@/components/RichText";
 
 type Params = { uid: string };
 
@@ -27,6 +27,14 @@ export default async function Page({ params }: { params: Params }) {
         Retour à la galerie
       </Link>
       <Bounded>
+        <h1 className="mb-8 text-4xl font-bold text-slate-100 md:mb-16">
+          {page.data.name}
+        </h1>
+        {page.data.description && (
+          <div className="mb-8 flex flex-col gap-5 rounded bg-[#242424] p-8 text-slate-300">
+            <RichText field={page.data.description} />
+          </div>
+        )}
         <SliceZone slices={page.data.slices} components={components} />
       </Bounded>
     </div>

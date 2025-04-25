@@ -281,17 +281,6 @@ interface CategorieDocumentData {
   name: prismic.KeyTextField;
 
   /**
-   * Description field in *Catégorie de photo*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: categorie.description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  description: prismic.KeyTextField;
-
-  /**
    * Image mise en avant field in *Catégorie de photo*
    *
    * - **Field Type**: Image
@@ -301,6 +290,17 @@ interface CategorieDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   highlight_image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *Catégorie de photo*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categorie.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Catégorie de photo*
