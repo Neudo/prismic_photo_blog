@@ -1,191 +1,222 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-body {
-  background-color: white;
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-dm-sans);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-.bg-primary-green {
-  background-color: #475149;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-.bg-dark {
-  background-color: #1c1c1c;
-}
+@layer utilities {
+  body {
+    background-color: white;
+  }
 
-.color-green {
-  color: #475149;
-}
+  .bg-primary-green {
+    background-color: #475149;
+  }
 
-.glass-container {
-  position: relative;
-}
+  .bg-dark {
+    background-color: #1c1c1c;
+  }
 
-.glass-container::before {
-  @apply absolute -inset-[10px] -z-10 rounded-xl border border-slate-100/20 bg-slate-200/10 backdrop-blur-md;
-  content: "";
-}
+  .color-green {
+    color: #475149;
+  }
 
-.got-filter::before {
-  content: "";
-  inset: 0;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 1.5rem;
-}
+  .glass-container {
+    position: relative;
+  }
 
-img {
-  width: 100%;
-}
+  .glass-container::before {
+    @apply absolute -inset-[10px] -z-10 rounded-xl border border-slate-100/20 bg-slate-200/10 backdrop-blur-md;
+    content: '';
+  }
 
-h1 {
-  font-size: 2.5rem;
-}
+  .got-filter::before {
+    content: '';
+    inset: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+  }
 
-h2 {
-  font-size: 2.125rem;
-  margin-bottom: 50px;
-}
+  img {
+    width: 100%;
+  }
 
-h3 {
-  font-size: 1.75rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-}
-
-@media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 1.75rem;
-    margin-bottom: 25px;
+    font-size: 2.125rem;
+    margin-bottom: 50px;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   h4 {
     font-size: 1.25rem;
   }
-}
 
-.burger {
-  width: 100%;
-}
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
 
-.burger::after,
-.burger::before {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 40%;
-  margin: auto;
-  background-color: white;
-  position: relative;
-  transition:
-    transform 0.3s,
-    background-color 0.3s ease;
-}
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 25px;
+    }
 
-.burger::before {
-  top: 5px;
-}
+    h3 {
+      font-size: 1.5rem;
+    }
 
-.burger::after {
-  top: -5px;
-}
+    h4 {
+      font-size: 1.25rem;
+    }
+  }
 
-.burger.burgerActive::after {
-  transform: rotate(45deg);
-  top: -1px;
-  background-color: #475149;
-}
+  .burger {
+    width: 100%;
+  }
 
-.burger.burgerActive::before {
-  transform: rotate(-45deg);
-  top: 0;
-  background-color: #475149;
-}
+  .burger::after,
+  .burger::before {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40%;
+    margin: auto;
+    background-color: white;
+    position: relative;
+    transition:
+      transform 0.3s,
+      background-color 0.3s ease;
+  }
 
-.svgCurve {
-  position: absolute;
-  top: 0;
-  left: -99px;
-  width: 100px;
-  height: 100%;
-  fill: rgb(71, 81, 73);
-  stroke: none;
-}
+  .burger::before {
+    top: 5px;
+  }
 
-.absolute-link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
+  .burger::after {
+    top: -5px;
+  }
 
-body {
-  transition-property: opacity, background-color, transform, filter;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
-}
+  .burger.burgerActive::after {
+    transform: rotate(45deg);
+    top: -1px;
+    background-color: #475149;
+  }
 
-#inner.anim-on {
-}
+  .burger.burgerActive::before {
+    transform: rotate(-45deg);
+    top: 0;
+    background-color: #475149;
+  }
 
-#slide {
-  transform: translateY(100vh);
-}
-#slide.anim-on {
-  transform: translateY(0);
-  transition: transform 0.5s ease-in-out;
-}
+  .svgCurve {
+    position: absolute;
+    top: 0;
+    left: -99px;
+    width: 100px;
+    height: 100%;
+    fill: rgb(71, 81, 73);
+    stroke: none;
+  }
 
-#inner {
-  background-color: black;
-}
-#page {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  background-color: white;
-}
+  .absolute-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
 
-#page.anim-on {
-  transition:
-    transform 1.2s ease-in-out,
-    opacity 0.3s ease-in-out;
-  transform: scale(0.9) translateY(-150px);
-  opacity: 0.5;
-}
+  body {
+    transition-property: opacity, background-color, transform, filter;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+  }
 
-#opacity {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-#opacity.anim-on {
-  opacity: 0;
-}
+  #inner.anim-on {
+  }
 
-.swiper-button-disabled {
-  opacity: 0.7;
-}
+  #slide {
+    transform: translateY(100vh);
+  }
+  #slide.anim-on {
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+  }
 
-.filter::before {
-  content: "";
-  inset: 0;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 9;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  top: 14px;
-  left: 14px;
-  border-radius: 10px;
+  #inner {
+    background-color: black;
+  }
+  #page {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    background-color: white;
+  }
+
+  #page.anim-on {
+    transition:
+      transform 1.2s ease-in-out,
+      opacity 0.3s ease-in-out;
+    transform: scale(0.9) translateY(-150px);
+    opacity: 0.5;
+  }
+
+  #opacity {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  #opacity.anim-on {
+    opacity: 0;
+  }
+
+  .swiper-button-disabled {
+    opacity: 0.7;
+  }
+
+  .filter::before {
+    content: '';
+    inset: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 9;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    top: 14px;
+    left: 14px;
+    border-radius: 10px;
+  }
 }
 
 @layer base {

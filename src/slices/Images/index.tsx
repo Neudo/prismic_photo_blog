@@ -129,7 +129,7 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
             <motion.li
               key={slide.src || index}
               onClick={() => setIndex(index)}
-              className="relative mx-[0] mb-4 mt-[0] cursor-pointer break-inside-avoid"
+              className="relative mx-0 mb-4 mt-0 cursor-pointer break-inside-avoid"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}

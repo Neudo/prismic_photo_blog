@@ -52,8 +52,8 @@ export default async function Page({ params }: { params: Params }) {
     <div>
       <SliceZone slices={page.data.slices} components={components} />
       {/* Map over each of the blog posts created and display a `PostCard` for it */}
-      <h1 className="container mx-auto max-w-screen-xl px-4 pt-16">Blog</h1>
-      <section className="container mx-auto grid max-w-screen-xl grid-cols-1 gap-6 px-4 py-16 sm:grid-cols-2 md:grid-cols-3 lg:px-0">
+      <h1 className="container mx-auto max-w-(--breakpoint-xl) px-4 pt-16">Blog</h1>
+      <section className="container mx-auto grid max-w-(--breakpoint-xl) grid-cols-1 gap-6 px-4 py-16 sm:grid-cols-2 md:grid-cols-3 lg:px-0">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
