@@ -68,6 +68,78 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
 
+type AlbumDocumentDataSlicesSlice = ImagesSlice;
+
+/**
+ * Content for Album documents
+ */
+interface AlbumDocumentData {
+  /**
+   * Mot de passe de l'album field in *Album*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Les visiteurs devront saisir ce mot de passe afin d'accéder à l'album
+   * - **API ID Path**: album.album_password
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  album_password: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Album*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: album.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AlbumDocumentDataSlicesSlice> /**
+   * Meta Description field in *Album*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: album.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Album*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: album.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Album*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: album.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Album document from Prismic
+ *
+ * - **API ID**: `album`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AlbumDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<AlbumDocumentData>, "album", Lang>;
+
 type BlogDocumentDataSlicesSlice = RichTextSlice;
 
 /**
@@ -817,6 +889,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutDocument
+  | AlbumDocument
   | BlogDocument
   | BlogPostDocument
   | CategorieDocument
@@ -1688,6 +1761,9 @@ declare module "@prismicio/client" {
       AboutDocument,
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
+      AlbumDocument,
+      AlbumDocumentData,
+      AlbumDocumentDataSlicesSlice,
       BlogDocument,
       BlogDocumentData,
       BlogDocumentDataSlicesSlice,
