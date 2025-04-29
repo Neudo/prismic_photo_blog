@@ -26,7 +26,7 @@ interface Category {
 }
 
 function SwiperGallery({ data }: any) {
-  const swiperRef = useRef<SwiperCore>();
+  const swiperRef = useRef<SwiperCore>(undefined);
 
   return (
     <div className="relative mx-auto max-w-[85vw] xl:max-w-6xl">

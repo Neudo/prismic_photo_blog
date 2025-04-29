@@ -3,6 +3,8 @@ import { SliceComponentProps } from "@prismicio/react";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { extractYouTubeVideoId } from "@/utils/extractYouTubeVideoId";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Youtube`.
  */

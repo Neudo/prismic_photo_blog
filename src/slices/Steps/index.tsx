@@ -4,7 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 import { PrismicNextImage } from "@prismicio/next";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type JSX } from "react";
 import Cards from "./Cards";
 
 /**

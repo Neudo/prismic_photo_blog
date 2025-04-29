@@ -7,6 +7,8 @@ import {
 } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 
+import type { JSX } from "react";
+
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
     return <PrismicNextLink field={node.data}>{children}</PrismicNextLink>;

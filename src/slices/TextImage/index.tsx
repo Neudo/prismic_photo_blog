@@ -1,9 +1,11 @@
-"use client";
+"use client";;
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 import { PrismicNextImage } from "@prismicio/next";
 import { motion } from "framer-motion";
+
+import type { JSX } from "react";
 
 /**
  * Props for `TextImage`.

@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 
+import type { JSX } from "react";
+
 /**
  * Props for `BlogText`.
  */

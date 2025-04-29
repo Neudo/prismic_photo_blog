@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
 import {PrismicNextImage} from "@prismicio/next";
 
+import type { JSX } from "react";
+
 /**
  * Props for `Item`.
  */

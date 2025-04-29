@@ -2,6 +2,8 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
+import type { JSX } from "react";
+
 interface CtaInfos {
   label?: string | undefined;
   link?: any;

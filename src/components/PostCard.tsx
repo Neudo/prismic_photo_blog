@@ -4,6 +4,8 @@ import { RichText } from "./RichText";
 import { Content } from "@prismicio/client";
 import { dateConverter } from "@/utils/dateConverter";
 
+import type { JSX } from "react";
+
 export const PostCard = ({
   post,
 }: {

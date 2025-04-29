@@ -3,6 +3,8 @@
 import { Client, Content, isFilled } from "@prismicio/client";
 import { PrismicLink } from "@prismicio/react";
 
+import type { JSX } from "react";
+
 export const Navigation = async ({
                                      client,
                                  }: {

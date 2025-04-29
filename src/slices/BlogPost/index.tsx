@@ -6,6 +6,8 @@ import clsx from "clsx";
 import Bounded from "@/components/Bounded";
 import { RichText } from "@/components/RichText";
 
+import type { JSX } from "react";
+
 /**
  * Props for `BlogPost`.
  */

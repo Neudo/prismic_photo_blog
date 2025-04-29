@@ -7,7 +7,7 @@ import {
   SliceComponentProps,
 } from "@prismicio/react";
 import "swiper/css";
-import React from "react";
+import React, { type JSX } from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage } from "@prismicio/next";
 import HeroMenu from "@/components/HeroMenu";

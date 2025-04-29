@@ -7,7 +7,7 @@ export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
-  const headerList = headers();
+  const headerList = await headers();
   const pathname = headerList.get("x-current-path");
 
   return (
