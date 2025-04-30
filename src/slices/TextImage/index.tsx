@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 import type { JSX } from "react";
 
+
 /**
  * Props for `TextImage`.
  */
@@ -16,6 +17,7 @@ export type TextImageProps = SliceComponentProps<Content.TextImageSlice>;
  * Component for "TextImage" Slices.
  */
 const TextImage = ({ slice }: TextImageProps): JSX.Element => {
+  
   return (
     <Bounded
       data-slice-type={slice.slice_type}

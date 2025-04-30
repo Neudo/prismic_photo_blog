@@ -1,10 +1,10 @@
 import React from "react";
-import { createClient } from "@/prismicio";
 import { PrismicLink } from "@prismicio/react";
+import { useMenu } from "@/hooks/use-menu";
 
-export default async function HeroMenu() {
-  const client = createClient();
-  const settings = await client.getSingle("settings");
+export default function HeroMenu() {
+  const settings = useMenu();
+  if (!settings) return null;
   return (
     <nav
       className="absolute left-1/2 top-[80%] z-20 hidden -translate-x-1/2 justify-center md:flex"

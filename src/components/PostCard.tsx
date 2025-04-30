@@ -13,6 +13,8 @@ export const PostCard = ({
 }): JSX.Element => {
   const { data } = post;
 
+  console.log(data.featured_image);
+
   return (
     <div className="relative rounded-xl bg-slate-200 duration-300 hover:[box-shadow:2px_3px_20px_0_#e3e3e3] ">
       <PrismicNextImage
