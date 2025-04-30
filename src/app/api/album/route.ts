@@ -17,9 +17,13 @@ export async function POST(request: NextRequest) {
     // Ensure the URL is absolute for NextResponse.redirect
     const cookieName = `album_access_${album.uid}`;
     const response = NextResponse.redirect(new URL(album.url, request.url));
-    response.cookies.set(cookieName, "true", { path: `/album/${album.uid}` });
+    response.cookies.set(cookieName, "true", { 
+      path: `/album/${album.uid}`, 
+      maxAge: 60 * 60,
+      secure: true,
+    });
     return response;
   }
 
-  return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+  return NextResponse.json({ error: "Mot de passe incorrect, merci de réessayer" }, { status: 401 });
 }

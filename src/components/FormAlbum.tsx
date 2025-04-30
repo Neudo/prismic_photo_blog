@@ -7,12 +7,14 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Toaster } from "@/components/ui/toaster";
+import { toast, useToast } from "@/hooks/use-toast";
 
   const formSchema = z.object({
     form_password: z
       .string()
-      .min(2, { message: "Le mot de passe doit contenir au moins 2 caractères." })
-  });
+      .min(1, "Veuillez saisir le mot de passe de l'album")
+  })
 
 
 export default function FormAlbum() {
@@ -40,18 +42,19 @@ const onSubmit = async (data: any) => {
   // Optionally, handle error messages
   const result = await response.json();
   if (result.error) {
-    alert(result.error); // or show an error in your UI
+    toast({
+      title: "Erreur",
+      description: result.error,
+      variant: "destructive",
+    });
   }
 };
   return (
-    <Bounded className="bg-dark min-h-screen">
-      <h1>Album</h1>
-      <p>Merci de saisir le mot de passe de l&apos;album</p>
-     
+    <Bounded>     
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 rounded-lg bg-stone-50 p-6 shadow-inner"
+        className="rounded-lg bg-stone-50 p-6 shadow-inner"
       >
         <FormField
           control={form.control}
@@ -62,15 +65,16 @@ const onSubmit = async (data: any) => {
               <FormControl>
                 <Input placeholder="" {...field} />
               </FormControl>
-              <FormDescription>Saisissez le mot de passe de l&apos;album.</FormDescription>
+              <FormDescription>Saisissez le mot de passe de l&apos;album</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Envoyer</Button>
+        <Button type="submit" className="mt-8">Envoyer</Button>
 
       </form>
     </Form>
+    <Toaster />
     </Bounded>
   );
 }
