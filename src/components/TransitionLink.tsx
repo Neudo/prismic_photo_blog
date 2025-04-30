@@ -3,6 +3,7 @@ import React from "react";
 import { PrismicLink } from "@prismicio/react";
 import { useRouter } from "next/navigation";
 import { useNav } from "@/context/NavContext";
+import Link from "next/link";
 
 export interface LinkProps {
   data: {
@@ -56,9 +57,9 @@ function TransitionLink({ data, simple_link }: LinkProps) {
   };
 
   return simple_link ? (
-    <a onClick={handleTransition} href={data.url}>
+    <Link onClick={handleTransition} href={data.url}>
       {data.data.name}
-    </a>
+    </Link>
   ) : (
     <PrismicLink
       onClick={handleTransition}

@@ -1,8 +1,9 @@
 import React from "react";
+import Head from "next/head";
 
 function Seo() {
   return (
-    <head>
+    <Head>
       <link
         rel="icon"
         type="image/png"
@@ -19,7 +20,7 @@ function Seo() {
       <meta name="apple-mobile-web-app-title" content="MyWebSite" />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="robots" content="index,follow" />
-    </head>
+    </Head>
   );
 }
 

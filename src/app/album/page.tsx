@@ -1,15 +1,12 @@
-import React from "react";
-import Bounded from "@/components/Bounded";
+import FormAlbum from '@/components/FormAlbum'
+import React from 'react'
 
-export default function page() {
+export default function Page() {
   return (
-    <Bounded>
+    <div>
       <h1>Album</h1>
       <p>Merci de saisir le mot de passe de l&apos;album</p>
-      <form action="">
-        <input type="password" name="password" id="password" />
-        <button type="submit">Valider</button>
-      </form>
-    </Bounded>
-  );
+      <FormAlbum />
+    </div>
+  )
 }

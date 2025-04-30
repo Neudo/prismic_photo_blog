@@ -2,6 +2,7 @@ import React from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
 import { headers } from "next/headers";
+import Link from "next/link";
 
 export default async function Footer() {
   const client = createClient();
@@ -28,7 +29,7 @@ export default async function Footer() {
             </li>
           ))}
           <li>
-            <a href="/mentions-legales">Mentions légales</a>
+            <Link href="/mentions-legales">Mentions légales</Link>
           </li>
         </ul>
       </nav>

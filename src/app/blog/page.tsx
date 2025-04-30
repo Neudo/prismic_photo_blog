@@ -14,11 +14,7 @@ type Params = { uid: string };
  * This page renders a Prismic Document dynamically based on the URL.
  */
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const page = await client.getSingle("blog");
 
@@ -36,7 +32,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("blog").catch(() => notFound());
 
