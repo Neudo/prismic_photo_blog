@@ -754,7 +754,7 @@ export interface SettingsDocumentDataNavigationItem {
    * - **API ID Path**: settings.navigation[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkField;
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Label field in *Settings → Navigation*
@@ -824,7 +824,13 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */;
-  facebook: prismic.LinkField;
+  facebook: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 
   /**
    * Tiktok field in *Settings*
@@ -835,7 +841,7 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  tiktok: prismic.LinkField;
+  tiktok: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Instagram field in *Settings*
@@ -846,7 +852,13 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  instagram: prismic.LinkField;
+  instagram: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 
   /**
    * Youtube field in *Settings*
@@ -857,7 +869,13 @@ interface SettingsDocumentData {
    * - **Tab**: Réseaux sociaux
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  youtube: prismic.LinkField;
+  youtube: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 
   /**
    * E-mail field in *Settings*
@@ -1197,6 +1215,51 @@ export type ImageFullSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageSlice → Items*
+ */
+export interface ImageSliceSliceDefaultItem {
+  /**
+   * image_field field in *ImageSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slice.items[].image_field
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_field: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ImageSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ImageSliceSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ImageSlice*
+ */
+type ImageSliceSliceVariation = ImageSliceSliceDefault;
+
+/**
+ * ImageSlice Shared Slice
+ *
+ * - **API ID**: `image_slice`
+ * - **Description**: ImageSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceSlice = prismic.SharedSlice<
+  "image_slice",
+  ImageSliceSliceVariation
+>;
+
+/**
  * Primary content in *Images → Items*
  */
 export interface ImagesSliceDefaultItem {
@@ -1480,7 +1543,7 @@ export interface StepsSliceDefaultItem {
    * - **API ID Path**: steps.items[].cta
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  cta: prismic.LinkField;
+  cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -1637,7 +1700,7 @@ export interface WorksSliceWorksBottomPrimary {
    * - **API ID Path**: works.worksBottom.primary.cta
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  cta: prismic.LinkField;
+  cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Texte du CTA field in *Works → Works - Partie basse → Primary*
@@ -1813,6 +1876,10 @@ declare module "@prismicio/client" {
       ImageFullSliceDefaultPrimary,
       ImageFullSliceVariation,
       ImageFullSliceDefault,
+      ImageSliceSlice,
+      ImageSliceSliceDefaultItem,
+      ImageSliceSliceVariation,
+      ImageSliceSliceDefault,
       ImagesSlice,
       ImagesSliceDefaultItem,
       ImagesSliceVariation,

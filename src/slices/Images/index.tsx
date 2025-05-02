@@ -16,7 +16,6 @@ import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
-import { log } from "console";
 
 /**
  * Props for `Images`.
@@ -90,8 +89,6 @@ const Images = ({ slice }: ImagesProps): JSX.Element => {
       );
     }
   }, [modelAreFiltered, model, slice.items]);
-
-  console.log(modelList);
 
   return (
     <section

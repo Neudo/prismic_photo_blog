@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Filter({ data }: { data: any }) {
-  console.log(data);
   const modelList: string[] = [];
 
   return (
