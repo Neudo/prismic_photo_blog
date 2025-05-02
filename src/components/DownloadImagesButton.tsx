@@ -39,7 +39,7 @@ export default function DownloadImagesButton({ images }: { images: string[] }) {
 
   return (
     <Button
-      className="sticky top-[92svh] z-10 w-full rounded-none py-8 md:top-4"
+      className="sticky top-[92svh] z-10 ml-4 w-full rounded-none py-8 md:relative md:top-4 md:w-auto md:rounded md:py-4 "
       variant="secondary"
       onClick={async () => {
         await downloadImages(images);
