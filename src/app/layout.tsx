@@ -50,6 +50,10 @@ export default function RootLayout({
           src={process.env.COOKIEYES}
           strategy="afterInteractive"
         ></Script>
+        <Script
+          src="https://www.hectoranalytics.com/script.js"
+          strategy="beforeInteractive"
+        />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
