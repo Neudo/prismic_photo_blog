@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
-import { existsSync } from 'fs'
 import * as prismic from '@prismicio/client'
 
 export async function POST(request: NextRequest) {
@@ -44,13 +42,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Always save locally first
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', destination, targetId)
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true })
-    }
-
-    const savedFiles = []
     const uploadedAssets = []
     let prismicErrors = []
     
@@ -58,8 +49,6 @@ export async function POST(request: NextRequest) {
     for (let i = 0; i < images.length; i++) {
       const image = images[i]
       const modelName = formData.get(`modelName_${i}`) as string || ''
-      const bytes = await image.arrayBuffer()
-      const buffer = Buffer.from(bytes)
       
       const timestamp = Date.now()
       const random = Math.random().toString(36).substring(2, 9)
@@ -73,10 +62,7 @@ export async function POST(request: NextRequest) {
         filename = `${timestamp}-${random}${extension}`
       }
       
-      // Save locally
-      const filepath = path.join(uploadDir, filename)
-      await writeFile(filepath, buffer)
-      savedFiles.push(`/uploads/${destination}/${targetId}/${filename}`)
+      // No local save needed in production - direct upload to Prismic only
 
       // Upload to Prismic Media Library
       try {
@@ -148,12 +134,6 @@ export async function POST(request: NextRequest) {
           updatedData.slices.push(imagesSlice)
         }
         
-        // Get the allowed model names from the slice configuration
-        const allowedModelNames = [
-          "Nathalie R.", "Alexandra", "Emilie H.", "Cécile B.", "Camille", "Audrey", 
-          "Guillaume", "Roxane", "Manon", "Claudia", "Laura", "Béa", "Maeva", 
-          "Jeremy & Maud", "Camille B.", "Claire", "Esmeralda"
-        ]
         
         // Clean existing items to remove invalid fields
         imagesSlice.items = imagesSlice.items.map((item: any) => ({
@@ -229,13 +209,12 @@ export async function POST(request: NextRequest) {
       prismicUploaded: uploadedAssets.length,
       documentUpdated: documentUpdateSuccess,
       prismicErrors: prismicErrors.length > 0 ? prismicErrors : undefined,
-      localBackup: savedFiles,
       destination: `${targetType}: ${documentTitle}`,
       message: documentUpdateSuccess && uploadedAssets.length > 0
-        ? `${uploadedAssets.length} images ajoutées à "${documentTitle}" dans Prismic et sauvegardées localement.`
+        ? `${uploadedAssets.length} images ajoutées à "${documentTitle}" dans Prismic.`
         : prismicErrors.length === 0
-        ? `${images.length} images sauvegardées localement et uploadées vers Prismic.`
-        : `${images.length} images sauvegardées localement. ${prismicErrors.length} erreurs Prismic.`,
+        ? `${images.length} images uploadées vers Prismic.`
+        : `${images.length} images traitées. ${prismicErrors.length} erreurs Prismic.`,
       debug: {
         repositoryName,
         documentType,
