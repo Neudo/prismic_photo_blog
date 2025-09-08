@@ -28,6 +28,7 @@ export default function MultiplePhotosPage() {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [imagePreviews, setImagePreviews] = useState<ImagePreview[]>([]);
+  const [globalModelName, setGlobalModelName] = useState("");
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -97,6 +98,14 @@ export default function MultiplePhotosPage() {
     setImagePreviews((prev) =>
       prev.map((img, i) => (i === index ? { ...img, modelName } : img)),
     );
+  };
+
+  const applyGlobalModelName = () => {
+    if (globalModelName.trim()) {
+      setImagePreviews((prev) =>
+        prev.map((img) => ({ ...img, modelName: globalModelName.trim() })),
+      );
+    }
   };
 
   const removeImage = (index: number) => {
@@ -324,7 +333,32 @@ export default function MultiplePhotosPage() {
                 <h3 className="text-sm font-medium text-gray-700">
                   Images sélectionnées ({imagePreviews.length})
                 </h3>
-                <div className="max-h-96 space-y-3 overflow-y-auto rounded-lg border p-4">
+
+                {/* Global model name section */}
+                <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                  <h4 className="mb-2 text-sm font-medium text-blue-900">
+                    Nom du modèle pour toutes les photos
+                  </h4>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Nom du modèle (sera appliqué à toutes les photos)"
+                      value={globalModelName}
+                      onChange={(e) => setGlobalModelName(e.target.value)}
+                      className="flex-1 rounded-md border border-blue-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={applyGlobalModelName}
+                      disabled={!globalModelName.trim()}
+                      className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-400"
+                    >
+                      Appliquer à tous
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-3 overflow-y-auto rounded-lg border p-4">
                   {imagePreviews.map((imagePreview, index) => (
                     <div
                       key={index}
@@ -348,27 +382,7 @@ export default function MultiplePhotosPage() {
                               handleModelNameChange(index, e.target.value)
                             }
                             className="w-full rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                            list={`models-${index}`}
                           />
-                          <datalist id={`models-${index}`}>
-                            <option value="Nathalie R." />
-                            <option value="Alexandra" />
-                            <option value="Emilie H." />
-                            <option value="Cécile B." />
-                            <option value="Camille" />
-                            <option value="Audrey" />
-                            <option value="Guillaume" />
-                            <option value="Roxane" />
-                            <option value="Manon" />
-                            <option value="Claudia" />
-                            <option value="Laura" />
-                            <option value="Béa" />
-                            <option value="Maeva" />
-                            <option value="Jeremy & Maud" />
-                            <option value="Camille B." />
-                            <option value="Claire" />
-                            <option value="Esmeralda" />
-                          </datalist>
                         </div>
                       </div>
                       <button

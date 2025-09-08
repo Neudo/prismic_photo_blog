@@ -22,29 +22,10 @@
           }
         },
         "model_name": {
-          "type": "Select",
+          "type": "Text",
           "config": {
             "label": "Nom du modèle",
-            "placeholder": "",
-            "options": [
-              "Nathalie R.",
-              "Alexandra",
-              "Emilie H.",
-              "Cécile B.",
-              "Camille",
-              "Audrey",
-              "Guillaume",
-              "Roxane",
-              "Manon",
-              "Claudia",
-              "Laura",
-              "Béa",
-              "Maeva",
-              "Jeremy & Maud",
-              "Camille B.",
-              "Claire",
-              "Esmeralda"
-            ]
+            "placeholder": "Nom du modèle (optionnel)"
           }
         }
       }
