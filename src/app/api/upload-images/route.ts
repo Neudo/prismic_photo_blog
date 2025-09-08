@@ -135,10 +135,10 @@ export async function POST(request: NextRequest) {
         }
         
         
-        // Clean existing items to remove invalid fields
+        // Clean existing items and preserve model_name
         imagesSlice.items = imagesSlice.items.map((item: any) => ({
-          image: item.image
-          // Remove any invalid fields like model_name
+          image: item.image,
+          model_name: item.model_name || null
         }))
         
         // Add new images to the slice
@@ -149,7 +149,7 @@ export async function POST(request: NextRequest) {
                 width: asset.width || 800,
                 height: asset.height || 600
               },
-              alt: asset.modelName || null, // Keep model name in alt text for reference
+              alt: null,
               copyright: null,
               url: asset.url,
               id: asset.id,
@@ -159,7 +159,8 @@ export async function POST(request: NextRequest) {
                 zoom: 1,
                 background: "transparent"
               }
-            }
+            },
+            model_name: asset.modelName || null
           }
           
           imagesSlice.items.push(newItem)
