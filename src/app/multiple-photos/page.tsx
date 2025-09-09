@@ -82,14 +82,50 @@ export default function MultiplePhotosPage() {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const compressImage = (file: File, maxWidth: number = 1920, quality: number = 0.8): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        const ratio = Math.min(maxWidth / img.width, maxWidth / img.height);
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        
+        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const compressedFile = new File([blob], file.name, {
+              type: 'image/jpeg',
+              lastModified: Date.now(),
+            });
+            resolve(compressedFile);
+          } else {
+            resolve(file);
+          }
+        }, 'image/jpeg', quality);
+      };
+      
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const files = Array.from(e.target.files);
-      const previews = files.map((file) => ({
-        file,
-        preview: URL.createObjectURL(file),
-        modelName: "",
-      }));
+      const previews: ImagePreview[] = [];
+      
+      for (const file of files) {
+        const compressedFile = await compressImage(file);
+        previews.push({
+          file: compressedFile,
+          preview: URL.createObjectURL(file),
+          modelName: "",
+        });
+      }
+      
       setImagePreviews((prev) => [...prev, ...previews]);
     }
   };
@@ -139,7 +175,7 @@ export default function MultiplePhotosPage() {
     setSuccess("");
 
     try {
-      const batchSize = 5; // Traiter 5 images à la fois
+      const batchSize = 2; // Traiter 2 images à la fois pour éviter l'erreur 413
       const batches = [];
       
       for (let i = 0; i < imagePreviews.length; i += batchSize) {
