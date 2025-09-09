@@ -7,6 +7,11 @@ const nextConfig = {
       { hostname: "images.prismic.io" },
     ],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '50mb'
+    }
+  }
 };
 
 export default nextConfig;

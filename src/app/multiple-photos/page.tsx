@@ -138,35 +138,60 @@ export default function MultiplePhotosPage() {
     setError("");
     setSuccess("");
 
-    const formData = new FormData();
-    formData.append("destination", selectedDestination);
-    formData.append("targetId", selectedTarget);
-
-    imagePreviews.forEach((imagePreview, index) => {
-      formData.append("images", imagePreview.file);
-      formData.append(`modelName_${index}`, imagePreview.modelName || "");
-    });
-
     try {
-      const response = await fetch("/api/upload-images", {
-        method: "POST",
-        body: formData,
-      });
+      const batchSize = 5; // Traiter 5 images à la fois
+      const batches = [];
+      
+      for (let i = 0; i < imagePreviews.length; i += batchSize) {
+        batches.push(imagePreviews.slice(i, i + batchSize));
+      }
 
-      if (response.ok) {
-        const data = await response.json();
-        setSuccess(`${data.count} images uploadées avec succès`);
+      let totalUploaded = 0;
+      let hasError = false;
+
+      for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+        const batch = batches[batchIndex];
+        
+        setSuccess(`Upload du lot ${batchIndex + 1}/${batches.length} (${batch.length} images)...`);
+
+        const formData = new FormData();
+        formData.append("destination", selectedDestination);
+        formData.append("targetId", selectedTarget);
+
+        batch.forEach((imagePreview, index) => {
+          formData.append("images", imagePreview.file);
+          formData.append(`modelName_${index}`, imagePreview.modelName || "");
+        });
+
+        const response = await fetch("/api/upload-images", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          totalUploaded += data.count;
+        } else {
+          hasError = true;
+          const errorData = await response.json();
+          setError(`Erreur lot ${batchIndex + 1}: ${errorData.error || "Erreur inconnue"}`);
+          break;
+        }
+
+        // Pause entre les lots pour éviter la surcharge
+        if (batchIndex < batches.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+
+      if (!hasError) {
+        setSuccess(`${totalUploaded} images uploadées avec succès !`);
         imagePreviews.forEach((img) => URL.revokeObjectURL(img.preview));
         setImagePreviews([]);
         setSelectedDestination("");
         setSelectedTarget("");
-        const fileInput = document.getElementById(
-          "file-input",
-        ) as HTMLInputElement;
+        const fileInput = document.getElementById("file-input") as HTMLInputElement;
         if (fileInput) fileInput.value = "";
-      } else {
-        const errorData = await response.json();
-        setError(errorData.error || "Erreur lors de l'upload");
       }
     } catch (err) {
       setError("Erreur lors de l'upload des images");
