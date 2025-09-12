@@ -1,0 +1,32 @@
+{
+  "name": "Alain B Photo - Photographe Professionnel Bourgogne",
+  "short_name": "Alain B Photo",
+  "description": "Photographe professionnel spécialisé en mariage, portrait et événementiel en Bourgogne",
+  "email": "bassalin@gmail.com",
+  "phone": "+33646133590",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["photography", "business"],
+  "lang": "fr-FR"
+}

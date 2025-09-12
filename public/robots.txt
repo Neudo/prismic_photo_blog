@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /multiple-photos/
+Disallow: /album/
+Disallow: /api/
+Disallow: /slice-simulator/
+
+Sitemap: https://alainbphoto.fr/sitemap.xml
